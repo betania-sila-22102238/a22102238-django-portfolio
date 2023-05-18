@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- layout.html -->
+    ...
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'portfolio/css/layout.css' %}">
+</head>
+<body>
+<header>
+    <div>Betânia Portfólio</div>
+    <nav>
+        <a href="{% url 'portfolio:home' %}"></a>
+        <a href="">home</a>
+        <a href="">products</a>
+        <a href="">about</a>
+        <a href="">contact</a>
+    </nav>
+</header>
+
+<main>
+    {% block main %}
+    {% endblock main %}
+</main>
+</body>
+</html>
