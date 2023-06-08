@@ -1,0 +1,74 @@
+{% extends 'portfolio/layout.html' %}
+
+{% block main %}
+        <style>
+        :root {
+            --primary-color: #333;
+            --secondary-color: #f9f9f9;
+            --font-family: Arial, sans-serif;
+            --font-size: 16px;
+            --line-height: 1.5;
+        }
+
+        body {
+            background-color: var(--secondary-color);
+            font-family: var(--font-family);
+            font-size: var(--font-size);
+            line-height: var(--line-height);
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #front-end {
+            background-color: #f2f2f2;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        #front-end h2 {
+            font-size: 36px;
+            text-align: center;
+            color: #333333;
+            margin-bottom: 20px;
+        }
+
+        #front-end p {
+            font-size: 18px;
+            line-height: 1.5;
+            color: #666666;
+            margin-bottom: 30px;
+        }
+
+        #front-end ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #front-end li {
+            font-size: 24px;
+            color: #5eabdf;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            background-image: url('https://cdn.iconscout.com/icon/free/png-256/check-441626.png');
+            background-repeat: no-repeat;
+            background-position: 0 10px;
+        }
+    </style>
+    <section id="front-end">
+        <h2>Front-end</h2>
+        <p>O front-end é a parte visual de um site ou aplicação web. É responsável por criar a interface que o usuário
+            irá interagir. As tecnologias utilizadas no front-end são:</p>
+        <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+        </ul>
+        <p>O HTML é responsável por criar a estrutura do site, indicando o conteúdo que deve ser exibido. O CSS é
+            responsável por definir o estilo visual do site, como cores, fontes e layout. Já o JavaScript é responsável
+            por adicionar interatividade ao site, permitindo a criação de animações, validação de formulários, entre
+            outras funcionalidades.</p>
+    </section>
+{% endblock %}
+

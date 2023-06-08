@@ -1,0 +1,145 @@
+{% extends 'portfolio/layout.html' %}
+{% load static %}
+
+{% block main %}
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100%;
+            width: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+        #myVideo {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+        }
+
+        /* Estilo para a seção hero */
+        @media (max-width: 600px) {
+            .hero {
+                background-image: url('{% static "portfolio/images/port2.jpeg" %}');
+                background-size: cover;
+                background-position: center;
+                height: 600px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+        }
+
+        @media (min-width: 601px) {
+            .hero {
+                background-image: url('{% static "portfolio/images/port1.jpeg" %}');
+                background-size: cover;
+                background-position: center;
+                height: 600px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: black;
+        }
+
+        .hero p {
+            font-size: 50px;
+        }
+
+        /* Estilo para a seção about */
+        .about {
+            padding: 50px;
+            color: aliceblue;
+        }
+
+        .about h2 {
+            font-size: 36px;
+            color: aquamarine;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+    </style>
+
+    <video autoplay muted loop id="myVideo">
+        <source src="{% static "portfolio/videos/Space.mp4" %}"
+                type="video/mp4">
+    </video>
+    <section class="hero">
+        <h1>"A tecnologia move o mundo e a humanidade para frente,
+            conectando sonhos e possibilidades em uma realidade que nunca poderíamos imaginar."</h1>
+    </section>
+
+    <section class="about">
+        <article>
+            <section id="sobre">
+                <h2>Sobre Mim</h2>
+                <p>Olá, meu nome é Betânia Silá e sou uma entusiasta da tecnologia, apaixonada por explorar todas
+                    as
+                    possibilidades que o mundo digital oferece.
+                    Acredito que a tecnologia tem o poder de transformar a maneira como vivemos e trabalhamos, e
+                    estou
+                    sempre em busca de aprender mais e me manter atualizada sobre as últimas tendências e novidades.
+                    Para mim, a tecnologia é muito mais do que apenas gadgets e dispositivos, é uma ferramenta
+                    poderosa
+                    para impulsionar o progresso e melhorar a vida das pessoas. Estou animada para compartilhar essa
+                    paixão com você!
+                <p>Para saber mais sobre mim, visite <a href="{% url 'portfolio:sobre' %}" style="color:rgb(31, 209, 233);">Minha outra página!</a></p>
+            </section>
+
+            <br>
+            <section id="curso">
+                <h2>Meu Curso</h2>
+                <p>Desde sempre, a tecnologia despertou em mim uma paixão sem limites e uma curiosidade insaciável
+                    sobre
+                    como ela funciona e como pode ser usada para transformar o mundo.
+                    Acredito que a Engenharia Informática é a escolha perfeita para transformar essa paixão e
+                    curiosidade em conhecimento prático e habilidades técnicas avançadas.
+                    Quero me tornar uma engenheira informática para aprender a criar tecnologias inovadoras e
+                    usar meu conhecimento para ajudar a tornar o mundo um lugar melhor, mais conectado e mais
+                    avançado.
+                    <li><a href="{% url 'portfolio:projetos' %}" style="color:rgb(31, 209, 233);">Veja meus
+                        projetos!</a></li>
+
+                </p>
+            </section>
+
+            <br>
+            <section id="sobre">
+                <h2>Sobre Este Website</h2>
+                <p><a href="{% url 'portfolio:tecnologias' %}" style="color: rgb(31, 209, 233);">Aqui</a> você pode
+                    encontrar
+                    informações
+                    sobre as tecnologias e padrões utilizados na criação deste website.</p>
+            </section>
+
+            <br>
+
+        </article>
+    </section>
+{% endblock main %}

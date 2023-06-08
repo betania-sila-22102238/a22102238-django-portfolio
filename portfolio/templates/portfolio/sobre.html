@@ -1,0 +1,133 @@
+{% extends 'portfolio/layout.html' %}
+{% load static %}
+
+{% block main %}
+    <style>
+        {
+        %
+        load
+        static
+        %
+        }
+        :root {
+            --primary-color: #333;
+            --secondary-color: #f9f9f9;
+            --font-family: Arial, sans-serif;
+            --font-size: 16px;
+            --line-height: 1.5;
+        }
+
+        body {
+            background-color: var(--secondary-color);
+            font-family: var(--font-family);
+            font-size: var(--font-size);
+            line-height: var(--line-height);
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Estilo para a seção hero */
+        .hero {
+            background-image: url('{% static "portfolio/images/betas.jpg" %}');
+            height: 100vh;
+            background-size: initial;
+            background-position: center;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, auto);
+            grid-gap: 10px;
+            margin: 20px auto 50px;
+            min-height: 100%;
+            /* adicionando margem inferior de 50px */
+        }
+
+        @media (max-width: 767px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+                margin: 10px auto 30px;
+                /* reduzindo a margem inferior para 30px */
+            }
+        }
+
+        .grid-item {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        header,
+        footer {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 10px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+    </style>
+    <section class="hero">
+    </section>
+    <section class="licenciatura">
+        <h2>Licenciatura</h2>
+        <ul>
+            <li>Cadeiras</li>
+        </ul>
+    </section>
+    <section class="educacao">
+        <h2>Educação</h2>
+        <ul>
+            <li>Escolas</li>
+        </ul>
+    </section>
+    <section class="aptidoes">
+        <h2>Aptidões e Competências Pessoais</h2>
+        <ul>
+            <li>Técnicas</li>
+            <li>Organizativas</li>
+            <li>Sociais</li>
+            <li>Linguísticas</li>
+        </ul>
+    </section>
+    <section class="interesses">
+        <h2>Interesses e Hobbies</h2>
+        <p>Além de programar, sou apaixonada por viagens e pela exploração de novos lugares.
+            Adoro conhecer outras culturas e povos, pois acredito que isso me permite compreender melhor
+            a diversidade humana e refletir sobre a riqueza de cada um.</p>
+    </section>
+
+    <section class="esperiencia">
+        <h2>Esperiência Profissional</h2>
+    </section>
+{% endblock %}
+

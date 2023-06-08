@@ -1,0 +1,95 @@
+{% extends 'portfolio/layout.html' %}
+{% block main %}
+    <style>
+        #contact {
+            background-color: #f9f9f9;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        #contact h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        #contact p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        #contact ul {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        #contact ul li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        #contact ul li a {
+            display: block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        #contact ul li a:hover {
+            background-color: #555;
+        }
+
+        #contact p:last-child {
+            font-size: 16px;
+            color: #999;
+        }
+
+    </style>
+    <section id="contact">
+        <div class="container">
+            <h2>Contacte-me</h2>
+            <p>Entre em contato comigo pelos seguintes meios:</p>
+            <ul>
+                <li><a href="#" onclick="callNumber()">Telefone</a></li>
+                <li><a href="#" onclick="sendEmail()">Email</a></li>
+                <li><a href="#" onclick="visitWebsite()">Website</a></li>
+            </ul>
+            <ul>
+                <li><a href="https://www.linkedin.com/in/betaniamaria/" style="color:rgb(31, 209, 233);"
+                       target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                <li><a href="https://github.com/betania-sila-22102238" style="color: rgb(31, 209, 233);"
+                       target="_blank"><i class="fab fa-github"></i>
+                    GitHub</a></li>
+                <li><a href="https://www.instagram.com/betaniamariaq/" style="color: rgb(31, 209, 233);"
+                       target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+                <li><a href="https://www.facebook.com/betaniamariaq/" style="color: rgb(31, 209, 233);"
+                       target="_blank"><i class="fab fa-facebook" style="color: rgb(31, 209, 233);"></i>
+                    Facebook</a></li>
+            </ul>
+            <p id="message">Estou ansiosa para ouvir de você!</p>
+            <p>Localização: Lisboa</p>
+        </div>
+    </section>
+{% endblock %}
+
+<script>
+    function callNumber() {
+        // Lógica para ação de ligar para um número
+        alert("Faça uma chamada para o número de telefone.");
+    }
+
+    function sendEmail() {
+        // Lógica para ação de enviar um email
+        alert("Envie um email para o endereço de email.");
+    }
+
+    function visitWebsite() {
+        // Lógica para ação de visitar um website
+        alert("Visite o website indicado.");
+    }
+
+</script>

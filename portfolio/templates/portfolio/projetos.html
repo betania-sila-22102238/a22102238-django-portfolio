@@ -1,0 +1,27 @@
+{% extends 'portfolio/layout.html' %}
+
+{% block main %}
+    <style>
+        .project {
+            margin-bottom: 20px;
+        }
+
+        .project img {
+            max-width: 100%;
+        }
+    </style>
+
+    <h1>Meu Portfólio</h1>
+
+    <div class="project">
+        <h2>Minesweeper</h2>
+        <img src="../../static/portfolio/images/minesweeper.jpg" alt="Minesweeper">
+        <p>Minesweeper meu primeiro jogo, foi um projeto feito na cadeira de fundamentos de Programação.</p>
+    </div>
+
+    <div class="project">
+        <h2>Projeto 2</h2>
+        <img src="projeto2.jpg" alt="Projeto 2">
+        <p>Descrição do projeto 2.</p>
+    </div>
+{% endblock %}

@@ -1,0 +1,114 @@
+/* definir uma fonte padrão para todo o documento */
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* definir estilos para o contêiner principal */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* estilos para imagens dentro do contêiner */
+img {
+  max-width: 100%;
+}
+
+/* estilos para rótulos (labels) */
+label {
+  margin-right: 10px;
+}
+
+/* estilos para campos de entrada de texto */
+input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+/* estilos para botões */
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  background-color: #007bff;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+/* estilos para botões quando o mouse passa por cima */
+button:hover {
+  background-color: #0069d9;
+}
+
+
+/* estilos para o contêiner da calculadora */
+.calculator-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+/* estilos para campos de entrada de texto dentro da calculadora */
+.calculator-container input[type="text"] {
+  width: 200px;
+}
+
+/* estilos para botões dentro da calculadora */
+.calculator-container button {
+  width: 80px;
+}
+
+/* estilos para o resultado da calculadora */
+#calculator-result {
+  margin-top: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* estilos para elementos com a classe "name-element" */
+.name-element {
+  font-weight: bold;
+  color: blue;
+}
+
+/* estilos para o elemento com o ID "date-element" */
+#date-element {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 50px;
+  justify-content: center;
+}
+
+#dark-mode-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+  cursor: pointer;
+  color: white;
+}
+
+#dark-mode-button:hover {
+  text-decoration: underline;
+}
+
+.dark-mode {
+  background-color: #282c35;
+  color: #fff;
+}
+
+.light-mode {
+  background-color: #fff;
+  color: #000;
+}
+
+

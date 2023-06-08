@@ -1,0 +1,90 @@
+{% extends 'portfolio/layout.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'portfolio/css/estilosExercicios.css' %}">
+
+{% block main %}
+
+    <label for="name-input">Insira seu nome:</label>
+    <input type="text" id="name-input">
+
+    <p>Bem-vindo, <span class="name-element">___</span>!</p>
+
+    <div class="calculator-container">
+        <label for="calculator-input"></label><input type="text" id="calculator-input">
+        <button id="calculate-button">
+            <p>Calcular</p>
+        </button>
+        <button id="clear-button">Limpar</button>
+        <div id="calculator-result"></div>
+    </div>
+
+    <div>
+        <img id="inspirational-image" src="../../static/portfolio/images/imagemInspiradora.jpeg"
+             alt="inspirational image">
+        <div>
+            <label for="caption-input">Escreva uma frase inspiradora:</label>
+            <input type="text" id="caption-input" name="caption-input">
+            <button id="caption-button">Adicionar legenda</button>
+        </div>
+    </div>
+
+    <div id="date-element"></div>
+
+    <p>Obrigado pela Visita: <span class="name-element">___</span></p>
+
+{% endblock %}
+
+
+<script>
+    const darkModeButton = document.querySelector('#dark-mode-button');
+
+    darkModeButton.addEventListener('click', function () {
+        document.body.classList.toggle('dark-mode');
+    });
+</script>
+
+<script>
+    const input = document.querySelector('#calculator-input');
+    const result = document.querySelector('#calculator-result');
+    const calculateButton = document.querySelector('#calculate-button');
+    const clearButton = document.querySelector('#clear-button');
+
+    calculateButton.addEventListener('click', function () {
+        result.textContent = eval(input.value);
+    });
+
+    clearButton.addEventListener('click', function () {
+        result.textContent = '';
+    });
+
+</script>
+
+<script>
+    const image = document.querySelector('#inspirational-image');
+    const captionInput = document.querySelector('#caption-input');
+    const captionButton = document.querySelector('#caption-button');
+
+    captionButton.addEventListener('click', function () {
+        image.setAttribute('title', captionInput.value);
+    });
+</script>
+
+<script>
+    const nameInput = document.querySelector('#name-input');
+    const nameElements = document.querySelectorAll('.name-element');
+
+    nameInput.addEventListener('input', function () {
+        const name = nameInput.value;
+        nameElements.forEach(element => {
+            element.textContent = name;
+        });
+    });
+</script>
+
+<script>
+    const dateElement = document.querySelector('#date-element');
+    const date = new Date();
+    const options = {day: 'numeric', month: 'long', year: 'numeric'};
+    const formattedDate = date.toLocaleDateString('pt', options);
+    dateElement.textContent = formattedDate;
+</script>

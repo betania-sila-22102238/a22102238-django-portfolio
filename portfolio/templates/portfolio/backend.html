@@ -1,0 +1,28 @@
+{% extends 'portfolio/layout.html' %}
+
+{% block link %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'portfolio/css/estilo.css' %}">
+    <link rel="stylesheet" href="{% static 'portfolio/css/stylebackend.css' %}">
+{% endblock %}
+
+
+{% block main %}
+    <section id="backend">
+        <h2>Back-End</h2>
+        <p>O back-end é a parte da aplicação web que fica no servidor e é responsável pelo processamento e
+            armazenamento dos dados. As principais tecnologias utilizadas no desenvolvimento de sistemas back-end
+            são:</p>
+        <ul>
+            <li>PHP</li>
+            <li>Python</li>
+            <li>Java</li>
+            <li>.NET</li>
+            <li>Node.js</li>
+            <li>Ruby on Rails</li>
+            <li>SQL</li>
+        </ul>
+    </section>
+{% endblock %}
+
+

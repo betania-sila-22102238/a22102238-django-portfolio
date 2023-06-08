@@ -2,27 +2,61 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <!-- layout.html -->
-    ...
+    <title>Portfólio</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'portfolio/css/layout.css' %}">
+    <link rel="stylesheet" href="{% static 'portfolio/css/estilo.css' %}">
+    <style>
+        #myVideo {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+        }
+    </style>
 </head>
 <body>
 <header>
-    <div>Betânia Portfólio</div>
     <nav>
-        <a href="{% url 'portfolio:home' %}"></a>
-        <a href="">home</a>
-        <a href="">products</a>
-        <a href="">about</a>
-        <a href="">contact</a>
+        <ul>
+            <li><a href="{% url 'portfolio:layout' %}" style="color:rgb(31, 209, 233);">Home</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Services</a>
+                <div class="dropdown-content">
+                    <a href="{% url 'portfolio:exercicios' %}" style="color:rgb(31, 209, 233);">Exercícios</a>
+                    <a href="#">Graphic Design</a>
+                    <a href="#">Digital Marketing</a>
+                </div>
+            </li>
+            <li><a href="{% url 'portfolio:index' %}" style="color:rgb(31, 209, 233);">Portfólio</a></li>
+            <li><a href="{% url 'portfolio:contacto' %}" style="color:rgb(31, 209, 233);">Contacto</a></li>
+        </ul>
     </nav>
 </header>
-
+<video autoplay muted loop id="myVideo">
+    <source src="{% static "portfolio/videos/Space.mp4" %}"
+            type="video/mp4">
+</video>
 <main>
     {% block main %}
     {% endblock main %}
 </main>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                {% load static %}
+                <p class="text-right" style="color:rgb(31, 209, 233);">Universidade Lusófona <a href="#"><img
+                        src="{% static 'portfolio/images/logo.png' %}" alt="Logotipo" style="width: 30px;"></a> De
+                    Humanidades e Tecnologias</p>
+                <p class="text-right" style="color:rgb(31, 209, 233);">Desenvolvido por <strong>Betânia Maria Queta Silá</strong> ©
+                    2023</p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
 </body>
 </html>
