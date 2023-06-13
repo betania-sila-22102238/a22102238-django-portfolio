@@ -1,0 +1,57 @@
+{% extends 'portfolio/layout.html' %}
+{% load static %}
+
+{% block main %}
+    <style>
+        main {
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            display: flex;
+            justify-content: center;
+            font-size: 40px;
+            color: aliceblue;
+        }
+
+        ul {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0;
+        }
+
+        .formacao-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin: 10px;
+            color: aliceblue;
+            font-size: 30px;
+        }
+
+        .formacao-item img, .curso-item img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+    </style>
+    <section>
+        <h2>Formação</h2>
+        <ul>
+            <li>
+                <div class="formacao-item">
+                    <img src="{% static 'portfolio/images/logo_liceu_Joao.png' %}" alt="Logo de Liceu João XXIII">
+                    <h3>12ºAno</h3>
+                    <p>Local: Bissau</p>
+                    <p>Período: 2014-2015</p>
+                </div>
+            </li>
+        </ul>
+    </section>
+{% endblock main %}

@@ -20,19 +20,40 @@
 <header>
     <nav>
         <ul>
-            <li><a href="{% url 'portfolio:layout' %}" style="color:rgb(31, 209, 233);">Home</a></li>
+            <li><a href="{% url 'portfolio:index' %}">Home</a></li>
             <li class="dropdown">
-                <a href="#" class="dropbtn">Services</a>
+                <a href="{% url 'portfolio:index' %}">Sobre Mim</a>
                 <div class="dropdown-content">
-                    <a href="{% url 'portfolio:exercicios' %}" style="color:rgb(31, 209, 233);">Exercícios</a>
-                    <a href="#">Graphic Design</a>
-                    <a href="#">Digital Marketing</a>
+                    <a href="{% url 'portfolio:lista_cadeiras' %}">Licenciatura</a>
+                    <a href="{% url 'portfolio:lista_educacao' %}">Educação</a>
+                    <a href="{% url 'portfolio:lista_certificados' %}">Certificados</a>
+                    <a href="{% url 'portfolio:lista_experiencia_profisional' %}">Experiência Profissional</a>
+                    <a href="{% url 'portfolio:lista_competencias_pessoais' %}">Aptidões e competências pessoais</a>
+                    <a href="{% url 'portfolio:lista_interesses_hobbies' %}">Interesses e hobbies</a>
                 </div>
             </li>
-            <li><a href="{% url 'portfolio:index' %}" style="color:rgb(31, 209, 233);">Portfólio</a></li>
-            <li><a href="{% url 'portfolio:contacto' %}" style="color:rgb(31, 209, 233);">Contacto</a></li>
+
+            <li><a href="{% url 'portfolio:projetos' %}">Projetos</a></li>
+            <li class="dropdown">
+                <a href="{% url 'portfolio:web' %}">Web</a>
+                <div class="dropdown-content">
+                    <a href="{% url 'portfolio:tecnologias' %}">Tecnologias Existentes</a>
+                    <a href="{% url 'portfolio:sobre' %}">Sobre Este Website</a>
+                    <a href="{% url 'portfolio:laboratorios' %}">Laboratórios</a>
+                    <a href="{% url 'portfolio:noticias' %}">Notícias</a>
+                    <a href="{% url 'portfolio:lista_competencias_pessoais' %}">Exemplos e Técnicas</a>
+                    <a href="{% url 'portfolio:lista_interesses_hobbies' %}">Quizz</a>
+                </div>
+            </li>
+
+
+            <li><a href="{% url 'portfolio:pagina' %}">Blog</a></li>
+            <li><a href="{% url 'portfolio:contacto' %}">Contacto</a></li>
+            <li><a href="#footer">Rodapé</a></li>
         </ul>
+        <div class="animation start-home"></div>
     </nav>
+
 </header>
 <video autoplay muted loop id="myVideo">
     <source src="{% static "portfolio/videos/Space.mp4" %}"
@@ -42,20 +63,15 @@
     {% block main %}
     {% endblock main %}
 </main>
-<footer>
+
+<footer id="footer">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                {% load static %}
-                <p class="text-right" style="color:rgb(31, 209, 233);">Universidade Lusófona <a href="#"><img
-                        src="{% static 'portfolio/images/logo.png' %}" alt="Logotipo" style="width: 30px;"></a> De
-                    Humanidades e Tecnologias</p>
-                <p class="text-right" style="color:rgb(31, 209, 233);">Desenvolvido por <strong>Betânia Maria Queta Silá</strong> ©
-                    2023</p>
+                <p class="text-center">Desenvolvido por <strong>Betânia Maria Queta</strong> <a href="#"><img src="{% static 'portfolio/images/logo.png' %}" alt="Logotipo" style="width: 35px;"></a> 2023</p>
             </div>
         </div>
     </div>
-
 </footer>
 
 </body>

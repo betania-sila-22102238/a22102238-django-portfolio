@@ -1,4 +1,3 @@
-from django.db import models
 
 from django.db import models
 
@@ -134,7 +133,13 @@ class InteresseHobby(models.Model):
     descricao = models.TextField()
     fotografia = models.ImageField(upload_to='interesses_hobbies')
     link = models.URLField()
-    # Outros campos e relacionamentos relevantes
+
+
+class Pessoa(models.Model):
+    nome = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.nome
 
 
 class Projeto(models.Model):
@@ -147,7 +152,6 @@ class Projeto(models.Model):
     link_repositorio = models.URLField()
     link_video = models.URLField()
     # Outros campos e relacionamentos relevantes
-
 
 class TFC(models.Model):
     titulo = models.CharField(max_length=100)
@@ -171,3 +175,28 @@ class Tecnologia(models.Model):
     linguagens_usadas = models.CharField(max_length=100)
     descricao = models.TextField()
     # Outros campos e relacionamentos relevantes
+
+
+class Pagina(models.Model):
+    titulo = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.titulo
+
+
+class Secao(models.Model):
+    titulo = models.CharField(max_length=100)
+    pagina = models.ForeignKey(Pagina, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.titulo
+
+
+class Conteudo(models.Model):
+    titulo = models.CharField(max_length=100)
+    texto = models.TextField()
+    secao = models.ForeignKey(Secao, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.titulo
+

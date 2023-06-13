@@ -2,26 +2,77 @@
 
 {% block main %}
     <style>
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-gap: 20px;
+        }
+
         .project {
-            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background-color: #f2f2f2;
+            padding: 20px;
+            border-radius: 8px;
         }
 
         .project img {
             max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 14px;
+            color: #777;
+        }
+         @media (max-width: 767px) {
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 
-    <h1>Meu Portfólio</h1>
+    <div class="projects-container">
+        <div class="project">
+            <h2>Minesweeper</h2>
+            <img src="../../static/portfolio/images/minesweeper.jpg" alt="Minesweeper">
+            <p>Minesweeper meu primeiro jogo, foi um projeto feito na cadeira de fundamentos de Programação.</p>
+        </div>
 
-    <div class="project">
-        <h2>Minesweeper</h2>
-        <img src="../../static/portfolio/images/minesweeper.jpg" alt="Minesweeper">
-        <p>Minesweeper meu primeiro jogo, foi um projeto feito na cadeira de fundamentos de Programação.</p>
-    </div>
+        <div class="project">
+            <h2>Não te Constipes</h2>
+            <img src="../../static/portfolio/images/naoTeConstipes.jpg" alt="Não Te Constipes">
+            <p>Minesweeper meu primeiro jogo, foi um projeto feito na cadeira de fundamentos de Programação.</p>
+        </div>
 
-    <div class="project">
-        <h2>Projeto 2</h2>
-        <img src="projeto2.jpg" alt="Projeto 2">
-        <p>Descrição do projeto 2.</p>
+        <div class="project">
+            <h2>Deisiflix</h2>
+            <img src="../../static/portfolio/images/deisiflix.jpg" alt="Deisiflix">
+            <p>Descrição do projeto 2.</p>
+        </div>
+
+        <div class="project">
+            <h2>Deisi Jungle</h2>
+            <img src="../../static/portfolio/images/deisijungle.jpg" alt="Deisiflix">
+            <p>"É um jogo de aventura e competição, ambientado em uma savana distante.
+                Os animais da selva decidem realizar uma série de provas esportivas para determinar quem será coroado como o Rei da Selva.
+                O protagonista, Tarzan, fica sabendo dessa competição e decide participar, confiante em suas habilidades atléticas.
+            </p>
+        </div>
+
+        <div class="project">
+            <h2>Máquina de Lavar Roupa</h2>
+            <img src="../../static/portfolio/images/Arquitetura%20de%20computadores.jpg" alt="Deisiflix">
+            <p>Descrição do projeto 2.</p>
+        </div>
     </div>
 {% endblock %}

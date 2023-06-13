@@ -19,19 +19,11 @@
             background-position: center center;
         }
 
-        #myVideo {
-            position: fixed;
-            right: 0;
-            bottom: 0;
-            min-width: 100%;
-            min-height: 100%;
-            z-index: -1;
-        }
 
         /* Estilo para a seção hero */
         @media (max-width: 600px) {
             .hero {
-                background-image: url('{% static "portfolio/images/port2.jpeg" %}');
+                background-image: url('{% static "portfolio/images/port5.jpeg.jpeg" %}');
                 background-size: cover;
                 background-position: center;
                 height: 600px;
@@ -86,10 +78,6 @@
 
     </style>
 
-    <video autoplay muted loop id="myVideo">
-        <source src="{% static "portfolio/videos/Space.mp4" %}"
-                type="video/mp4">
-    </video>
     <section class="hero">
         <h1>"A tecnologia move o mundo e a humanidade para frente,
             conectando sonhos e possibilidades em uma realidade que nunca poderíamos imaginar."</h1>
@@ -98,7 +86,6 @@
     <section class="about">
         <article>
             <section id="sobre">
-                <h2>Sobre Mim</h2>
                 <p>Olá, meu nome é Betânia Silá e sou uma entusiasta da tecnologia, apaixonada por explorar todas
                     as
                     possibilidades que o mundo digital oferece.
@@ -109,12 +96,12 @@
                     poderosa
                     para impulsionar o progresso e melhorar a vida das pessoas. Estou animada para compartilhar essa
                     paixão com você!
-                <p>Para saber mais sobre mim, visite <a href="{% url 'portfolio:sobre' %}" style="color:rgb(31, 209, 233);">Minha outra página!</a></p>
+                <p>Para saber mais sobre mim, visite <a href="{% url 'portfolio:sobre' %}"
+                                                        style="color:rgb(31, 209, 233);">Minha outra página!</a></p>
             </section>
 
             <br>
             <section id="curso">
-                <h2>Meu Curso</h2>
                 <p>Desde sempre, a tecnologia despertou em mim uma paixão sem limites e uma curiosidade insaciável
                     sobre
                     como ela funciona e como pode ser usada para transformar o mundo.
@@ -128,17 +115,6 @@
 
                 </p>
             </section>
-
-            <br>
-            <section id="sobre">
-                <h2>Sobre Este Website</h2>
-                <p><a href="{% url 'portfolio:tecnologias' %}" style="color: rgb(31, 209, 233);">Aqui</a> você pode
-                    encontrar
-                    informações
-                    sobre as tecnologias e padrões utilizados na criação deste website.</p>
-            </section>
-
-            <br>
 
         </article>
     </section>

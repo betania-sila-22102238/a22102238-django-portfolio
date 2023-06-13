@@ -1,0 +1,55 @@
+{% extends 'portfolio/layout.html' %}
+{% load static %}
+
+{% block title %}Meus Certificados{% endblock %}
+
+{% block main %}
+    <style>
+        /* styles.css */
+
+        main {
+            padding: 20px;
+        }
+
+        .content {
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .colorful {
+            color: #ff9800;
+        }
+    </style>
+    <script>
+        // Script para alternar a cor do texto
+        const btnToggle = document.getElementById('btnToggle');
+        const text = document.getElementById('text');
+
+        btnToggle.addEventListener('click', function () {
+            text.classList.toggle('colorful');
+        });
+    </script>
+    <section class="certificates">
+        <div class="certificate">
+            <h2>Certificado do 12º Ano</h2>
+            <p>Liceu João 23</p>
+            <img src="{% static 'portfolio/images/certf12an.jpg' %}" alt="Certificado 1">
+        </div>
+
+        <div class="certificate">
+            <h2>Certidão de Frequência 11º Ano</h2>
+            <p>Liceu João 23</p>
+            <img src="{% static 'portfolio/images/certf11ano.jpg' %}" alt="Certificado 2">
+        </div>
+
+        <!-- Adicione mais certificados conforme necessário -->
+    </section>
+{% endblock %}
