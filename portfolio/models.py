@@ -1,5 +1,6 @@
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.utils import timezone
 from django.shortcuts import redirect
 
 
@@ -78,13 +79,15 @@ class Educacao(models.Model):
     local = models.CharField(max_length=100)
     periodo = models.CharField(max_length=100)
     logotipo_instituicao = models.ImageField(upload_to='logos')
+
     def is_valid(self):
-            try:
-                self.clean_fields()
-                self.clean()
-            except ValidationError:
-                return False
-            return True
+        try:
+            self.clean_fields()
+            self.clean()
+        except ValidationError:
+            return False
+        return True
+
 
 class Certificado(models.Model):
     titulo = models.CharField(max_length=100)
@@ -159,6 +162,7 @@ class Projeto(models.Model):
     link_video = models.URLField()
     # Outros campos e relacionamentos relevantes
 
+
 class TFC(models.Model):
     titulo = models.CharField(max_length=100)
     autores = models.ManyToManyField('Pessoa', related_name='tfc_autores')
@@ -205,3 +209,11 @@ class Conteudo(models.Model):
 
     def __str__(self):
         return self.titulo
+
+class DadosExtraidos(models.Model):
+    timestamp = models.DateTimeField(default=timezone.now)
+    valor = models.FloatField()
+
+
+
+

@@ -1,0 +1,127 @@
+/* fonte Google */
+@import url('https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap');
+* {
+  font-family: 'Syne Mono', monospace;
+}
+
+/* background colors */
+body {
+  background-color: #41aad672;
+}
+fieldset:nth-of-type(1) {
+  background-color: #0b6cd4;
+}
+fieldset:nth-of-type(2) {
+  background-color: #76e1f4;
+}
+
+/* menu */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3333335c;
+  color: #fff;
+  padding: 1rem;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 1rem;
+}
+nav a:hover {
+  background-color: #666;
+  color: #fff;
+  padding: 0.5rem;
+}
+/* Configuração dos ícones do menu*/
+nav a[href = 'home.html']:before {
+    font-family: 'FontAwesome';
+    content: "🏡";
+    /*Ícone de casa */
+}
+
+nav a[href='multimedia.html']:before {
+    font-family: 'FontAwesome';
+    content: "📷";
+    /* Ícone de câmera */
+}
+
+nav a[href='local.html']:before {
+    font-family: 'FontAwesome';
+    content: "🗺";
+    /* Ícone de mapa */
+}
+
+nav a[href='info.html']:before {
+    font-family: 'FontAwesome';
+    content: "📰";
+    /* Ícone de câmera */
+}
+
+nav a[href='quizz.html']:before {
+    font-family: 'FontAwesome';
+    content: "❓";
+    /* Ícone de mapa */
+}
+
+nav a[href='html5-css.html']:before {
+    font-family: 'FontAwesome';
+    content: "📝";
+    /* Ícone de mapa */
+}
+
+/* atributo */
+
+img[src="images/wordcloud_blank.jpg"] {
+    width: 500px;
+  }
+  
+
+
+/* pseudo-elementos */
+p:first-letter {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+}
+p:first-line {
+  font-style: italic;
+}
+
+/* formulário */
+form {
+  display: flex;
+  flex-wrap: wrap;
+}
+form label {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+form input[type="text"], form input[type="email"], form select {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 0.25rem;
+  border: 1px solid #ccc;
+}
+form input[type="submit"] {
+  background-color: #333;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+}
+form input[type="submit"]:hover {
+  background-color: #666;
+}
+
+/* molduras */
+img, iframe {
+  border: 2px solid #1c7097;
+  border-radius: 0.25rem;
+}
+
+

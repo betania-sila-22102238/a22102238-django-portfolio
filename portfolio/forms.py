@@ -1,6 +1,8 @@
 from django import forms
 
-from .models import Pagina, Secao, Conteudo,Educacao
+from .models import Pagina, Secao, Conteudo, Educacao, Comentario
+
+
 class PaginaForm(forms.ModelForm):
     class Meta:
         model = Pagina
@@ -20,3 +22,10 @@ class EducacaoForm(forms.ModelForm):
         model = Educacao
         fields = '__all__'
 
+class ComentarioForm(forms.ModelForm):
+    class Meta:
+        model = Comentario
+        fields = ['texto']
+        widgets = {
+            'texto': forms.Textarea(attrs={'rows': 4, 'cols': 40})
+        }

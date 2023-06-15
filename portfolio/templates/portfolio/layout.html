@@ -29,7 +29,7 @@
                     <a href="{% url 'portfolio:lista_certificados' %}">Certificados</a>
                     <a href="{% url 'portfolio:lista_experiencia_profisional' %}">Experiência Profissional</a>
                     <a href="{% url 'portfolio:lista_competencias_pessoais' %}">Aptidões e competências pessoais</a>
-                    <a href="{% url 'portfolio:lista_interesses_hobbies' %}">Interesses e hobbies</a>
+                    <a href="{% url 'portfolio:mais_sobre_mim' %}">Interesses e hobbies</a>
                 </div>
             </li>
 
@@ -38,25 +38,26 @@
                 <a href="">Web</a>
                 <div class="dropdown-content">
                     <a href="{% url 'portfolio:tecnologias' %}">Tecnologias Existentes</a>
-                    <a href="{% url 'portfolio:sobre' %}">Sobre Este Website</a>
+                    <a href="{% url 'portfolio:exercicios' %}">JavaScript Calculadora</a>
                     <a href="{% url 'portfolio:laboratorios' %}">Laboratórios</a>
-                    <a href="https://www.publico.pt /">Notícias</a>
+                    <a href="https://www.publico.pt/">Notícias</a>
                     <a href="{% url 'portfolio:lista_competencias_pessoais' %}">Exemplos e Técnicas</a>
-                    <a href="{% url 'portfolio:lista_interesses_hobbies' %}">Quizz</a>
+                    <a href="{% url 'portfolio:quizz' %}">Quizz</a>
                 </div>
             </li>
-
-
-            <li><a href="{% url 'portfolio:pagina' %}">Blog</a></li>
+            <li><a href="{% url 'portfolio:web_scrapping' %}">Web Scrapping</a></li>
+            <li><a href="{% url 'portfolio:blog' %}">Blog</a></li>
             <li><a href="{% url 'portfolio:contacto' %}">Contacto</a></li>
             <li><a href="#footer">Rodapé</a></li>
         </ul>
+        <a href="#" class="dark-toggle"><i class="fas fa-moon"></i></a>
+        <a href="#" class="toggle-video"><i class="fas fa-video"></i></a>
         <div class="animation start-home"></div>
     </nav>
 
 </header>
 <video autoplay muted loop id="myVideo">
-    <source src="{% static "portfolio/videos/Space.mp4" %}"
+    <source src="{% static 'portfolio/videos/SaveTube.App-No Copyright Video, Background, Green Screen, Motion Graphics, Animated Background, Copyright Free-(144p).mp4' %}"
             type="video/mp4">
 </video>
 <main>
@@ -68,11 +69,27 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <p class="text-center">Desenvolvido por <strong>Betânia Maria Queta</strong> <a href="#"><img src="{% static 'portfolio/images/logo.png' %}" alt="Logotipo" style="width: 35px;"></a> 2023</p>
+                <p class="text-center">Desenvolvido por <strong>Betânia Maria Queta</strong> <a href="#"><img
+                        src="{% static 'portfolio/images/logo.png' %}" alt="Logotipo" style="width: 35px;"></a> 2023</p>
             </div>
         </div>
     </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+<script>
+    const darkToggle = document.querySelector('.dark-toggle');
+    const toggleVideo = document.querySelector('.toggle-video');
+    const body = document.body;
+
+    darkToggle.addEventListener('click', function () {
+        body.classList.toggle('dark');
+    });
+
+    toggleVideo.addEventListener('click', function () {
+        const video = document.querySelector('#myVideo');
+        video.style.display = (video.style.display === 'none') ? 'block' : 'none';
+    });
+</script>
 </body>
 </html>

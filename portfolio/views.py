@@ -1,11 +1,15 @@
 # Create your views here.
+from bs4 import BeautifulSoup
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from .forms import PaginaForm, SecaoForm, ConteudoForm
+from django.contrib.sites import requests
+from django.http import HttpResponse
+
+from .forms import  SecaoForm, ConteudoForm
 from django.shortcuts import render, redirect
 from .models import Cadeira, Educacao, Certificado, ExperienciaProfissional, CompetenciaPessoal, CompetenciaTecnica, \
-    CompetenciaOrganizativa, CompetenciaSocial, CompetenciaLinguistica, InteresseHobby, Projeto, TFC, Tecnologia, \
-    Secao, Conteudo
+    CompetenciaOrganizativa, CompetenciaSocial, CompetenciaLinguistica, Projeto, TFC, Tecnologia, \
+    Secao, Conteudo, Blog, Artigo, Area, Autor, DadosExtraidos
 
 
 def lista_cadeiras(request):
@@ -51,11 +55,6 @@ def lista_competencias_linguisticas(request):
     competencias_linguisticas = CompetenciaLinguistica.objects.all()
     return render(request, 'portfolio/lista_competências_linguísticas.html',
                   {'competências_linguísticas': competencias_linguisticas})
-
-
-def lista_interesses_hobbies(request):
-    interesses_hobbies = InteresseHobby.objects.all()
-    return render(request, 'portfolio/lista_interesses_hobbies.html', {'interesses_hobbies': interesses_hobbies})
 
 
 def lista_projetos(request):
@@ -112,6 +111,10 @@ def contacto_page_view(request):
 
 def sobre_page_view(request):
     return render(request, 'portfolio/sobre_este_website.html')
+
+
+def mais_sobre_mim(request):
+    return render(request, 'portfolio/mais_sobre_mim.html')
 
 
 def criar_secao(request):
@@ -184,17 +187,6 @@ def listar_conteudos(request):
     return render(request, 'portfolio/listar_conteúdos.html', {'conteúdos': conteudos})
 
 
-def criar_pagina(request):
-    if request.method == 'POST':
-        form = PaginaForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('listar_páginas')
-    else:
-        form = PaginaForm()
-    return render(request, 'portfolio/criar_pagina.html', {'form': form})
-
-
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -217,6 +209,7 @@ def formularioEducacao(request):
         form = Educacao()
 
     return render(request, 'portfolio/formulario_educacao.html', {'form': form})
+
 
 @login_required
 def minha_visualizacao_protegida(request):
@@ -252,3 +245,46 @@ def educacao(request):
     return render(request, 'portfolio/educacao.html', context)
 
 
+def blog(request):
+    blog = Blog.objects.first()  # Obtém o primeiro blog (você pode ajustar isso conforme necessário)
+    areas = Area.objects.all()
+    autores = Autor.objects.all()
+    artigos = Artigo.objects.all()
+
+    context = {
+        'blog': blog,
+        'areas': areas,
+        'autores': autores,
+        'artigos': artigos,
+    }
+
+    return render(request, 'portfolio/blog.html', context)
+
+
+def web_scrapping(request):
+    url = "https://www.publico.pt"
+
+    response = requests.get(url)
+    if response.status_code == 200:
+        content = response.text
+        soup = BeautifulSoup(content, 'html.parser')
+
+        # Extraia os dados do web scraping
+        # Substitua esta parte do código de acordo com a estrutura do site e os dados que deseja extrair
+        dados_obtidos = []
+        # Exemplo: Extrai os valores de uma tabela
+        table = soup.find('table')
+        rows = table.find_all('tr')
+        for row in rows:
+            cells = row.find_all('td')
+            if len(cells) == 2:
+                timestamp = cells[0].text
+                valor = cells[1].text
+
+                # Armazena os dados no banco de dados
+                DadosExtraidos.objects.create(timestamp=timestamp, valor=valor)
+                dados_obtidos.append({'timestamp': timestamp, 'valor': valor})
+
+        return render(request, 'portfolio/web_scrapping.html', {'dados': dados_obtidos})
+    else:
+        return HttpResponse("Erro ao fazer a requisição HTTP")
