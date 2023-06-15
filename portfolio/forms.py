@@ -1,5 +1,6 @@
 from django import forms
-from .models import Pagina, Secao, Conteudo
+
+from .models import Pagina, Secao, Conteudo,Educacao
 class PaginaForm(forms.ModelForm):
     class Meta:
         model = Pagina
@@ -14,3 +15,8 @@ class ConteudoForm(forms.ModelForm):
     class Meta:
         model = Conteudo
         fields = ['titulo', 'texto', 'secao']
+class EducacaoForm(forms.ModelForm):
+    class Meta:
+        model = Educacao
+        fields = '__all__'
+

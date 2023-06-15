@@ -1,0 +1,25 @@
+{% extends 'portfolio/layout.html' %}
+{% load static %}
+{% block main %}
+    <style>
+        h2 {
+            display: flex;
+            justify-content: center;
+            color: aliceblue;
+        }
+
+        p {
+            display: flex;
+            justify-content: center;
+            color: aliceblue;
+        }
+
+    </style>
+    {% for formacao in formacoes %}
+        <h2>{{ formacao.curso }}</h2>
+        <p>Local: {{ formacao.local }}</p>
+        <p>Período: {{ formacao.periodo }}</p>
+        <img src="{{ formacao.logotipo_instituicao.file }}" alt="Logotipo da Instituição">
+    {% endfor %}
+{% endblock main %}
+

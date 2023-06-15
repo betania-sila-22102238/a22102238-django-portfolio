@@ -1,8 +1,10 @@
 {% extends 'portfolio/layout.html' %}
 
+   {% block main %}
+
     <style>
         :root {
-            --primary-color: #333;
+            --primary-color: white;
             --secondary-color: #f9f9f9;
             --font-family: Arial, sans-serif;
             --font-size: 16px;
@@ -20,7 +22,6 @@
         }
 
         #tecnologias {
-            background-color: #f2f2f2;
             padding: 20px;
             margin-top: 50px;
         }
@@ -28,14 +29,14 @@
         #tecnologias h2 {
             font-size: 36px;
             text-align: center;
-            color: #333333;
+            color: aliceblue;
             margin-bottom: 20px;
         }
 
         #tecnologias p {
             font-size: 18px;
             line-height: 1.5;
-            color: #666666;
+            color: white;
             margin-bottom: 30px;
         }
 
@@ -47,7 +48,7 @@
 
         #tecnologias li {
             font-size: 24px;
-            color: #5eabdf;
+            color: white;
             margin-bottom: 10px;
             padding-left: 20px;
             background-image: url('https://cdn.iconscout.com/icon/free/png-256/check-441626.png');
@@ -55,8 +56,6 @@
             background-position: 0 10px;
         }
     </style>
-
-   {% block main %}
         <section id="tecnologias">
             <h2>Tecnologias existentes</h2>
             <p>Aqui você pode encontrar informações sobre as principais tecnologias utilizadas na programação web.</p>

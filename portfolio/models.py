@@ -1,5 +1,6 @@
-
+from django.core.exceptions import ValidationError
 from django.db import models
+from django.shortcuts import redirect
 
 
 class Blog(models.Model):
@@ -77,8 +78,13 @@ class Educacao(models.Model):
     local = models.CharField(max_length=100)
     periodo = models.CharField(max_length=100)
     logotipo_instituicao = models.ImageField(upload_to='logos')
-    # Outros campos e relacionamentos relevantes
-
+    def is_valid(self):
+            try:
+                self.clean_fields()
+                self.clean()
+            except ValidationError:
+                return False
+            return True
 
 class Certificado(models.Model):
     titulo = models.CharField(max_length=100)
@@ -199,4 +205,3 @@ class Conteudo(models.Model):
 
     def __str__(self):
         return self.titulo
-

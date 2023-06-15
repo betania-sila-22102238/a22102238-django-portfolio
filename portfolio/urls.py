@@ -14,13 +14,13 @@ urlpatterns = [
     path('pagina', views.criar_pagina, name='pagina'),
 
     # URLs de autenticação
-    path('login/', auth_views.LoginView.as_view(template_name='portfolio/login.html'), name='login'),
+    path('login', auth_views.LoginView.as_view(template_name='portfolio/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view, name='logout'),
     path('register/', views.register, name='register'),
 
     # Sobre Mim
     path('lista_cadeiras', views.lista_cadeiras, name='lista_cadeiras'),
-    path('lista_educacao', views.lista_educacao, name='lista_educacao'),
+    path('educacao', views.educacao, name='educacao'),
     path('lista_certificados', views.lista_certificados, name='lista_certificados'),
     path('lista_certificados', views.lista_experiencia_profissional, name='lista_experiencia_profisional'),
     path('lista_competencias_linguisticas', views.lista_competencias_linguisticas, name='lista_competencias_linguisticas'),

@@ -1,6 +1,6 @@
 nav {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     position: relative;
     z-index: 1;
     padding: 20px 0;
@@ -28,6 +28,20 @@ nav a {
 
 nav a:hover {
     color: deeppink;
+}
+
+/* Estilos para dispositivos móveis */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav li {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
 }
 
 .dropdown-content {

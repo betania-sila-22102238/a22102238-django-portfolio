@@ -1,22 +1,16 @@
 # Create your views here.
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import authenticate, login, logout
 from .forms import PaginaForm, SecaoForm, ConteudoForm
 from django.shortcuts import render, redirect
 from .models import Cadeira, Educacao, Certificado, ExperienciaProfissional, CompetenciaPessoal, CompetenciaTecnica, \
     CompetenciaOrganizativa, CompetenciaSocial, CompetenciaLinguistica, InteresseHobby, Projeto, TFC, Tecnologia, \
-    Pagina, Secao, Conteudo
+    Secao, Conteudo
 
 
 def lista_cadeiras(request):
     cadeiras = Cadeira.objects.all()
     return render(request, 'portfolio/lista_cadeiras.html', {'cadeiras': cadeiras})
-
-
-def lista_educacao(request):
-    educacao = Educacao.objects.all()
-    return render(request, 'portfolio/lista_educação.html', {'educação': educacao})
 
 
 def lista_certificados(request):
@@ -73,9 +67,12 @@ def lista_tfc(request):
     tfcs = TFC.objects.all()
     return render(request, 'portfolio/lista_tfc.html', {'tfcs': tfcs})
 
+
 def web(request):
     web = Tecnologia.objects.all()
     return render(request, 'portfolio/web.html', {'web': web})
+
+
 def lista_tecnologias(request):
     tecnologias = Tecnologia.objects.all()
     return render(request, 'portfolio/lista_tecnologias.html', {'tecnologias': tecnologias})
@@ -208,6 +205,19 @@ def register(request):
         form = UserCreationForm()
     return render(request, 'portfolio/register.html', {'form': form})
 
+
+def formularioEducacao(request):
+    if request.method == 'POST':
+        form = Educacao(request.POST, request.FILES)
+        if form.is_valid():
+            educacao = form.save()
+            educacao.save()
+            return redirect('detalhes_educacao', educacao_id=educacao.id)
+    else:
+        form = Educacao()
+
+    return render(request, 'portfolio/formulario_educacao.html', {'form': form})
+
 @login_required
 def minha_visualizacao_protegida(request):
     # Acesso a dados, processamento, ou outras operações relacionadas à sua lógica de negócio
@@ -235,4 +245,10 @@ def exemplos_e_tecnicas(request):
 
 def quizz(request):
     return render(request, 'portfolio/quizz.html')
+
+
+def educacao(request):
+    context = {'formacoes': Educacao.objects.all()}
+    return render(request, 'portfolio/educacao.html', context)
+
 

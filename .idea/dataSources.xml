@@ -8,5 +8,14 @@
       <jdbc-url>jdbc:sqlite:C:\Users\user\Desktop\Lusofona22.23\Programação Web\a22102238-django-portfolio\db.sqlite3</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="Django default" uuid="a171c25f-d193-49b8-afbe-93e8c0f588e0">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/settings.py</remarks>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\user\Desktop\Lusofona22.23\Programação Web\a22102238-django-portfolio\db.sqlite3</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

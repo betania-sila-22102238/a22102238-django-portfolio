@@ -1,0 +1,61 @@
+{% extends 'portfolio/layout.html' %}
+
+{% block main %}
+    <style>
+        /* criar_educacao.css */
+
+        /* Estilos específicos para a página criar_educacao.html */
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+    </style>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="id_curso">Curso:</label>
+        <input type="text" id="id_curso" name="curso" required>
+        <br>
+        <label for="id_local">Local:</label>
+        <input type="text" id="id_local" name="local" required>
+        <br>
+        <label for="id_periodo">Período:</label>
+        <input type="text" id="id_periodo" name="periodo" required>
+        <br>
+        <label for="id_logotipo_instituicao">Logotipo da Instituição:</label>
+        <input type="file" id="id_logotipo_instituicao" name="logotipo_instituicao" required>
+        <br>
+        <input type="submit" value="Salvar">
+    </form>
+{% endblock %}
