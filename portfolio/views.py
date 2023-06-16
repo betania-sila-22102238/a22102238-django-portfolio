@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.sites import requests
 from django.http import HttpResponse
 
-from .forms import  SecaoForm, ConteudoForm
+from .forms import SecaoForm, ConteudoForm
 from django.shortcuts import render, redirect
 from .models import Cadeira, Educacao, Certificado, ExperienciaProfissional, CompetenciaPessoal, CompetenciaTecnica, \
     CompetenciaOrganizativa, CompetenciaSocial, CompetenciaLinguistica, Projeto, TFC, Tecnologia, \
@@ -197,20 +197,6 @@ def register(request):
         form = UserCreationForm()
     return render(request, 'portfolio/register.html', {'form': form})
 
-
-def formularioEducacao(request):
-    if request.method == 'POST':
-        form = Educacao(request.POST, request.FILES)
-        if form.is_valid():
-            educacao = form.save()
-            educacao.save()
-            return redirect('detalhes_educacao', educacao_id=educacao.id)
-    else:
-        form = Educacao()
-
-    return render(request, 'portfolio/formulario_educacao.html', {'form': form})
-
-
 @login_required
 def minha_visualizacao_protegida(request):
     # Acesso a dados, processamento, ou outras operações relacionadas à sua lógica de negócio
@@ -244,6 +230,9 @@ def educacao(request):
     context = {'formacoes': Educacao.objects.all()}
     return render(request, 'portfolio/educacao.html', context)
 
+def cadeira(request):
+    context = {'cadeiras': Cadeira.objects.all()}
+    return render(request, 'portfolio/lista_cadeiras.html', context)
 
 def blog(request):
     blog = Blog.objects.first()  # Obtém o primeiro blog (você pode ajustar isso conforme necessário)
@@ -282,8 +271,8 @@ def web_scrapping(request):
                 valor = cells[1].text
 
                 # Armazena os dados no banco de dados
-                DadosExtraidos.objects.create(timestamp=timestamp, valor=valor)
-                dados_obtidos.append({'timestamp': timestamp, 'valor': valor})
+                DadosExtraidos.objects.create(timestamp=timestamp, valor=float(valor))
+                dados_obtidos.append({'timestamp': timestamp, 'valor': float(valor)})
 
         return render(request, 'portfolio/web_scrapping.html', {'dados': dados_obtidos})
     else:

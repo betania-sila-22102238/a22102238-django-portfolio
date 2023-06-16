@@ -1,0 +1,50 @@
+{% extends 'portfolio/layout.html' %}
+
+{% block title %}Cadeiras - Página Moderna{% endblock %}
+
+{% block main %}
+    <section class="cadeiras">
+        <h2>Engenharia Informática</h2>
+        <ul>
+            {% for cadeira in cadeiras %}
+                <li class="cadeira-nome">{{ cadeira.nome }}</li>
+                <li>Ano: {{ cadeira.ano }}</li>
+                <li>Semestre: {{ cadeira.semestre }}</li>
+                <li>Ano Letivo: {{ cadeira.ano_letivo_frequentado }}</li>
+                <li>Tópicos Abordados: {{ cadeira.topicos_abordados }}</li>
+
+                <!-- Outras informações da cadeira -->
+            {% endfor %}
+        </ul>
+    </section>
+
+    <style>
+        /* Estilos personalizados para a página de cadeiras */
+        .cadeiras {
+            background-color: #f1f1f1;
+            padding: 20px;
+        }
+
+        .cadeiras h2 {
+            color: #333;
+            font-size: 24px;
+        }
+
+        .cadeiras ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .cadeiras li {
+            margin-bottom: 10px;
+        }
+
+        .cadeiras .cadeira-nome {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        /* Mais estilos personalizados... */
+    </style>
+{% endblock %}

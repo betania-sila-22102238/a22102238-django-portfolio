@@ -1,7 +1,8 @@
-<!-- templates/index.html -->
 {% extends 'portfolio/layout.html' %}
 
-{% block title %}Gráfico de Dados Extraídos{% endblock %}
+{% block title %}
+    Gráfico de Dados Extraídos
+{% endblock %}
 
 {% block main %}
     <style>
@@ -21,7 +22,8 @@
             border: 1px solid #ccc;
         }
     </style>
-       <script>
+
+    <script>
         // Código JavaScript para criar o gráfico usando a biblioteca Chart.js
         var ctx = document.getElementById('myChart').getContext('2d');
         var chart = new Chart(ctx, {
@@ -30,7 +32,7 @@
                 labels: [{% for dado in dados %}"{{ dado.timestamp }}",{% endfor %}],
                 datasets: [{
                     label: 'Valores',
-                    data: [undefined{% for dado in dados %}{{ dado.valor }},{% endfor %}],
+                    data: [undefined{% for dado in dados %}{{ dado.valor }}, {% endfor %}],
                     borderColor: 'rgba(0, 123, 255, 1)',
                     backgroundColor: 'rgba(0, 123, 255, 0.2)',
                     borderWidth: 1
@@ -56,18 +58,18 @@
 
     <table>
         <thead>
-            <tr>
-                <th>Timestamp</th>
-                <th>Valor</th>
-            </tr>
+        <tr>
+            <th>Timestamp</th>
+            <th>Valor</th>
+        </tr>
         </thead>
         <tbody>
-            {% for dado in dados %}
-                <tr>
-                    <td>{{ dado.timestamp }}</td>
-                    <td>{{ dado.valor }}</td>
-                </tr>
-            {% endfor %}
+        {% for dado in dados %}
+            <tr>
+                <td>{{ dado.timestamp }}</td>
+                <td>{{ dado.valor }}</td>
+            </tr>
+        {% endfor %}
         </tbody>
     </table>
 

@@ -137,13 +137,6 @@ class CompetenciaLinguistica(models.Model):
     # Outros campos e relacionamentos relevantes
 
 
-class InteresseHobby(models.Model):
-    titulo = models.CharField(max_length=100)
-    descricao = models.TextField()
-    fotografia = models.ImageField(upload_to='interesses_hobbies')
-    link = models.URLField()
-
-
 class Pessoa(models.Model):
     nome = models.CharField(max_length=100)
 
@@ -213,7 +206,4 @@ class Conteudo(models.Model):
 class DadosExtraidos(models.Model):
     timestamp = models.DateTimeField(default=timezone.now)
     valor = models.FloatField()
-
-
-
 
