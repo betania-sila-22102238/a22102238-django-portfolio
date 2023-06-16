@@ -1,0 +1,62 @@
+{% extends 'portfolio/layout.html' %}
+
+{% block title %}Competências e Aptidões{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <style>
+            /* Estilos adicionais para a página de competências */
+            .competencias-container {
+                background-color: #f7f7f7;
+                padding: 30px;
+            }
+
+            .competencias-container h1 {
+                color: #555;
+            }
+
+            .competencias-container ul {
+                padding: 0;
+                margin: 0;
+                list-style-type: none;
+            }
+
+            .competencias-container li {
+                background-color: #ebebeb;
+                margin-bottom: 20px;
+                padding: 20px;
+                border-radius: 4px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            .competencias-container h3 {
+                margin: 0;
+                color: #333;
+            }
+
+            .competencias-container p {
+                margin-top: 10px;
+                color: #888;
+            }
+
+            .competencias-container .empty-message {
+                color: #888;
+                font-style: italic;
+            }
+        </style>
+
+        <div class="competencias-container">
+            <h1>Competências e Aptidões</h1>
+            <ul>
+                {% for competencia in competencias %}
+                    <li>
+                        <h3>{{ competencia.nome }}</h3>
+                        <p>{{ competencia.descricao }}</p>
+                    </li>
+                {% empty %}
+                    <li class="empty-message">Não há competências e aptidões disponíveis.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

@@ -1,8 +1,11 @@
+
 {% extends 'portfolio/layout.html' %}
 {% load static %}
 
-{% block main %}
-  <h1>Laboratórios</h1>
-
-  <a href="{% static 'portfolio/lab4/index.html' %}">Laboratório 4</a>
+{% block content %}
+    <h2>Detalhes do Lab</h2>
+    <h3>{{ lab }}</h3>
+    {% for file in lab_files %}
+        <p>{{ file }}</p>
+    {% endfor %}
 {% endblock %}

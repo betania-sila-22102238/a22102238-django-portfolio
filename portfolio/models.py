@@ -71,14 +71,12 @@ class Cadeira(models.Model):
     ects = models.IntegerField()
     ano_letivo_frequentado = models.IntegerField()
     topicos_abordados = models.TextField()
-    # Outros campos e relacionamentos relevantes
-
 
 class Educacao(models.Model):
     curso = models.CharField(max_length=100)
     local = models.CharField(max_length=100)
     periodo = models.CharField(max_length=100)
-    logotipo_instituicao = models.ImageField(upload_to='logos')
+    logotipo_instituicao = models.ImageField()
 
     def is_valid(self):
         try:
@@ -91,12 +89,10 @@ class Educacao(models.Model):
 
 class Certificado(models.Model):
     titulo = models.CharField(max_length=100)
-    # Outros campos e relacionamentos relevantes
 
 
 class OutrasHabilitacoees(models.Model):
     titulo = models.CharField(max_length=100)
-    # Outros campos e relacionamentos relevantes
 
 
 class ExperienciaProfissional(models.Model):
@@ -106,35 +102,13 @@ class ExperienciaProfissional(models.Model):
     # Outros campos e relacionamentos relevantes
 
 
-class CompetenciaPessoal(models.Model):
-    titulo = models.CharField(max_length=100)
-    descricao_curta = models.CharField(max_length=100)
-    # Outros campos e relacionamentos relevantes
+class Competencia(models.Model):
+    nome = models.CharField(max_length=100)
+    descricao = models.TextField()
 
+    def __str__(self):
+        return self.nome
 
-class CompetenciaTecnica(models.Model):
-    titulo = models.CharField(max_length=100)
-    descricao_curta = models.CharField(max_length=100)
-    # Outros campos e relacionamentos relevantes
-
-
-class CompetenciaOrganizativa(models.Model):
-    titulo = models.CharField(max_length=100)
-    descricao_curta = models.CharField(max_length=100)
-    # Outros campos e relacionamentos relevantes
-
-
-class CompetenciaSocial(models.Model):
-    titulo = models.CharField(max_length=100)
-    descricao_curta = models.CharField(max_length=100)
-    # Outros campos e relacionamentos relevantes
-
-
-class CompetenciaLinguistica(models.Model):
-    lingua = models.CharField(max_length=100)
-    nivel = models.CharField(max_length=100)
-    certificacao = models.CharField(max_length=100)
-    # Outros campos e relacionamentos relevantes
 
 
 class Pessoa(models.Model):
@@ -203,7 +177,17 @@ class Conteudo(models.Model):
     def __str__(self):
         return self.titulo
 
+
 class DadosExtraidos(models.Model):
     timestamp = models.DateTimeField(default=timezone.now)
     valor = models.FloatField()
 
+
+class Question(models.Model):
+    question_text = models.CharField(max_length=200)
+
+
+class Choice(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    choice_text = models.CharField(max_length=200)
+    is_correct = models.BooleanField(default=False)

@@ -2,14 +2,14 @@
 from bs4 import BeautifulSoup
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.sites import requests
-from django.http import HttpResponse
+import os
+import requests
+from django.http import HttpResponseRedirect
 
 from .forms import SecaoForm, ConteudoForm
-from django.shortcuts import render, redirect
-from .models import Cadeira, Educacao, Certificado, ExperienciaProfissional, CompetenciaPessoal, CompetenciaTecnica, \
-    CompetenciaOrganizativa, CompetenciaSocial, CompetenciaLinguistica, Projeto, TFC, Tecnologia, \
-    Secao, Conteudo, Blog, Artigo, Area, Autor, DadosExtraidos
+from django.shortcuts import render, redirect, HttpResponse
+from .models import Cadeira, Educacao, Certificado, ExperienciaProfissional, Projeto, TFC, Tecnologia, \
+    Secao, Conteudo, Blog, Artigo, Area, Autor, DadosExtraidos, Question, Choice, Competencia
 
 
 def lista_cadeiras(request):
@@ -21,40 +21,6 @@ def lista_certificados(request):
     certificados = Certificado.objects.all()
     return render(request, 'portfolio/lista_certificados.html', {'certificados': certificados})
 
-
-def lista_experiencia_profissional(request):
-    experiencia_profissional = ExperienciaProfissional.objects.all()
-    return render(request, 'portfolio/lista_experiência_profissional.html',
-                  {'experiência_profissional': experiencia_profissional})
-
-
-def lista_competencias_pessoais(request):
-    competencias_pessoais = CompetenciaPessoal.objects.all()
-    return render(request, 'portfolio/lista_competências_pessoais.html',
-                  {'competências_pessoais': competencias_pessoais})
-
-
-def lista_competencias_tecnicas(request):
-    competencias_tecnicas = CompetenciaTecnica.objects.all()
-    return render(request, 'portfolio/lista_competências_técnicas.html',
-                  {'competências_técnicas': competencias_tecnicas})
-
-
-def lista_competencias_organizativas(request):
-    competencias_organizativas = CompetenciaOrganizativa.objects.all()
-    return render(request, 'portfolio/lista_competências_organizativas.html',
-                  {'competências_organizativas': competencias_organizativas})
-
-
-def lista_competencias_sociais(request):
-    competencias_sociais = CompetenciaSocial.objects.all()
-    return render(request, 'portfolio/lista_competências_sociais.html', {'competências_sociais': competencias_sociais})
-
-
-def lista_competencias_linguisticas(request):
-    competencias_linguisticas = CompetenciaLinguistica.objects.all()
-    return render(request, 'portfolio/lista_competências_linguísticas.html',
-                  {'competências_linguísticas': competencias_linguisticas})
 
 
 def lista_projetos(request):
@@ -197,6 +163,7 @@ def register(request):
         form = UserCreationForm()
     return render(request, 'portfolio/register.html', {'form': form})
 
+
 @login_required
 def minha_visualizacao_protegida(request):
     # Acesso a dados, processamento, ou outras operações relacionadas à sua lógica de negócio
@@ -230,9 +197,11 @@ def educacao(request):
     context = {'formacoes': Educacao.objects.all()}
     return render(request, 'portfolio/educacao.html', context)
 
+
 def cadeira(request):
     context = {'cadeiras': Cadeira.objects.all()}
     return render(request, 'portfolio/lista_cadeiras.html', context)
+
 
 def blog(request):
     blog = Blog.objects.first()  # Obtém o primeiro blog (você pode ajustar isso conforme necessário)
@@ -263,17 +232,54 @@ def web_scrapping(request):
         dados_obtidos = []
         # Exemplo: Extrai os valores de uma tabela
         table = soup.find('table')
-        rows = table.find_all('tr')
-        for row in rows:
-            cells = row.find_all('td')
-            if len(cells) == 2:
-                timestamp = cells[0].text
-                valor = cells[1].text
+        if table is not None:
+            rows = table.find_all('tr')
+            for row in rows:
+                cells = row.find_all('td')
+                if len(cells) == 2:
+                    timestamp = cells[0].text
+                    valor = cells[1].text
 
-                # Armazena os dados no banco de dados
-                DadosExtraidos.objects.create(timestamp=timestamp, valor=float(valor))
-                dados_obtidos.append({'timestamp': timestamp, 'valor': float(valor)})
+                    # Armazena os dados no banco de dados
+                    DadosExtraidos.objects.create(timestamp=timestamp, valor=float(valor))
+                    dados_obtidos.append({'timestamp': timestamp, 'valor': float(valor)})
 
-        return render(request, 'portfolio/web_scrapping.html', {'dados': dados_obtidos})
-    else:
-        return HttpResponse("Erro ao fazer a requisição HTTP")
+            else:
+                return HttpResponse("Erro ao fazer a requisição HTTP", status=response.status_code)
+
+
+def labs(request, lab):
+    lab_path = os.path.join('portfolio', 'static', 'portfolio', 'labs', lab)
+    lab_files = os.listdir(lab_path)
+    lab_images = [file for file in lab_files if file.endswith(('.jpg', '.jpeg', '.png', '.gif'))]
+    lab_videos = [file for file in lab_files if file.endswith(('.mp4', '.avi', '.mov'))]
+    context = {
+        'lab': lab,
+        'lab_files': lab_files,
+        'lab_images': lab_images,
+        'lab_videos': lab_videos
+    }
+    return render(request, 'portfolio/laboratorios.html', context)
+
+
+def quiz(request):
+    questions = Question.objects.all()
+    context = {'questions': questions}
+    return render(request, 'portfolio/quiz.html', context)
+
+def submit_quiz(request):
+    if request.method == 'POST':
+        score = 0
+        for question in Question.objects.all():
+            selected_choice_id = request.POST.get(str(question.id), None)
+            if selected_choice_id:
+                selected_choice = Choice.objects.get(id=selected_choice_id)
+                if selected_choice.is_correct:
+                    score += 1
+        context = {'score': score}
+        return render(request, 'portfolio/result.html', context)
+    return HttpResponseRedirect('/quiz/')
+
+def competencias(request):
+    competencias = Competencia.objects.all()
+    return render(request, 'portfolio/competencias.html', {'competencias': competencias})

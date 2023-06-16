@@ -15,10 +15,13 @@
         }
 
     </style>
+
     {% for formacao in formacoes %}
         <h2>{{ formacao.curso }}</h2>
         <p>Local: {{ formacao.local }}</p>
         <p>Período: {{ formacao.periodo }}</p>
-        <img src="{{ formacao.logotipo_instituicao.file }}" alt="Logotipo da Instituição">
+
+        <img src="{{ formacao.logotipo_instituicao.url }}" alt="Logotipo da Instituição"
+             style="display: flex; justify-content: center; margin: 0 auto;">
     {% endfor %}
 {% endblock main %}
