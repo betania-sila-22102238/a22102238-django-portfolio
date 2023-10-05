@@ -1,7 +1,6 @@
 {% extends 'portfolio/layout.html' %}
 
-   {% block main %}
-
+{% block main %}
     <style>
         :root {
             --primary-color: white;
@@ -21,88 +20,29 @@
             padding: 0;
         }
 
-        #tecnologias {
+        .maintenance-page {
+            background-color: #f8f8f8;
             padding: 20px;
-            margin-top: 50px;
+            text-align: center;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            color: #333;
         }
 
-        #tecnologias h2 {
+        .maintenance-page h1 {
             font-size: 36px;
-            text-align: center;
-            color: aliceblue;
             margin-bottom: 20px;
         }
 
-        #tecnologias p {
-            font-size: 18px;
-            line-height: 1.5;
-            color: white;
-            margin-bottom: 30px;
-        }
-
-        #tecnologias ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        #tecnologias li {
+        /* Estilize a frase "Em Manutenção" como preferir */
+        .maintenance-text {
             font-size: 24px;
-            color: white;
-            margin-bottom: 10px;
-            padding-left: 20px;
-            background-image: url('https://cdn.iconscout.com/icon/free/png-256/check-441626.png');
-            background-repeat: no-repeat;
-            background-position: 0 10px;
+            font-weight: bold;
+            color: #007BFF; /* Cor azul, pode ajustar para sua preferência */
         }
     </style>
-        <section id="tecnologias">
-            <h2>Tecnologias existentes</h2>
-            <p>Aqui você pode encontrar informações sobre as principais tecnologias utilizadas na programação web.</p>
-            <ul>
-                <li>HTML</li>
-                <p>
-                    HTML (Hypertext Markup Language): é a linguagem padrão para criação de páginas da web.
-                    É usada para estruturar o conteúdo e fornecer significado aos elementos na página.
-                </p>
-
-                <li>CSS</li>
-                <p>
-                    CSS (Cascading Style Sheets): é uma linguagem usada para descrever a apresentação visual de uma
-                    página web.
-                    Com CSS, é possível definir cores, fontes, layout e outros aspectos visuais da página.
-                </p>
-
-                <li>JavaScript</li>
-                <p>
-                    JavaScript: é uma linguagem de programação que permite a criação de páginas interativas e dinâmicas.
-                    Com JavaScript, é possível criar animações, validação de formulários e outras interações na página.
-                </p>
-
-                <li>PHP</li>
-                <p>
-                    PHP: é uma linguagem de programação popular para desenvolvimento de aplicativos web.
-                    É usada principalmente no lado do servidor para criar páginas dinâmicas e interagir com bancos de
-                    dados.
-                </p>
-
-                <li>Ruby on Rails</li>
-                <p>
-                    Ruby on Rails: é um framework de desenvolvimento web em Ruby, que ajuda a construir rapidamente
-                    aplicativos web escaláveis e de alta qualidade.
-                </p>
-
-                <li>AngularJS</li>
-                <p>
-                    AngularJS: é um framework JavaScript desenvolvido pelo Google, usado para criar aplicativos web de
-                    página única (SPA) com interatividade rica.
-                </p>
-
-                <li>React</li>
-                <p>
-                    React: é uma biblioteca JavaScript usada para criar interfaces de usuário (UI) reutilizáveis e
-                    escaláveis para aplicativos web e móveis.
-                </p>
-            </ul>
-        </section>
- {% endblock %}
+    <div class="maintenance-page">
+        <h1>Em Manutenção</h1>
+        <p class="maintenance-text">Em breve estaremos de volta!</p>
+    </div>
+{% endblock %}

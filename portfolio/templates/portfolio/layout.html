@@ -6,7 +6,6 @@
     {% load static %}
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 </head>
 <style>
     /* Estilos para o Particle.js em segundo plano */
@@ -14,8 +13,8 @@
         position: fixed;
         top: 0;
         left: 0;
-        width: 100vw;
-        height: 100vh;
+        width: 100%;
+        height: 100%;
         z-index: -1;
     }
 
@@ -29,92 +28,156 @@
         font-family: 'Montserrat', sans-serif;
         font-size: 16px;
         line-height: 1.6;
+        transition: background-color 0.3s ease;
     }
 
-    /* Estilos para o cabeçalho e navegação */
-    body {
-        background-color: #f8f8f8;
-        color: #333;
-    }
-
+    /* Estilos para o cabeçalho */
     header {
-        background-color: #fff; /* Fundo branco para o cabeçalho */
-        color: #333;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        padding: 20px 0;
+        position: relative;
+        z-index: 1; /* Certifique-se de que o cabeçalho esteja acima de outros elementos */
+        transition: background-color 0.3s ease;
     }
 
     /* Estilos para a navegação */
     nav ul {
         list-style: none;
         display: flex;
-        justify-content: center; /* Centralizar os itens horizontalmente */
+        justify-content: center;
     }
 
     nav ul li {
         margin: 0 20px;
+        position: relative;
     }
 
     nav ul li a {
         text-decoration: none;
-        color: #333;
+        color: black;
         font-size: 18px;
         padding: 10px 20px;
         transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    nav ul li a:hover {
-        background-color: #ff9900; /* Fundo laranja no hover */
-        color: #fff; /* Texto branco no hover */
-        border-radius: 5px; /* Cantos arredondados no hover */
-    }
-
-
-    /* Estilos para o botão de alternância de dark mode */
-    .toggle-label::before {
-        content: "\f186"; /* Código do ícone de lua (pode ser alterado para um ícone de sua escolha) */
-        font-family: 'Font Awesome'; /* Adicione um ícone usando uma fonte de ícones, como Font Awesome */
-        font-size: 18px;
-        color: #333;
-        margin-right: 4px;
-        transition: transform 0.3s ease, color 0.3s ease;
-    }
-
-    #dark-mode-checkbox:checked + .toggle-label::before {
-        content: "\f185"; /* Código do ícone de lua (pode ser alterado para um ícone de sua escolha) */
-        transform: rotate(30deg);
-        color: #ff9900; /* Laranja no modo escuro */
-    }
-
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #fff;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        animation: fadeIn 0.3s ease;
-    }
-
-    li.dropdown:hover .dropdown-content {
+        border-radius: 5px;
         display: block;
     }
 
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
+    nav ul li a:hover {
+        background-color: lightcoral;
+        color: #fff;
+    }
+
+    /* Restante do seu código CSS permanece o mesmo */
+    /* Estilos para o dropdown */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #333;
+        min-width: 160px;
+        z-index: 1;
+        border-radius: 5px;
+    }
+
+    .dropdown-content a {
+        color: #fff;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    nav ul li:hover .dropdown-content {
+        display: block;
+    }
+
+    /* Estilos para o menu de alternância de modo escuro */
+    .dark-mode-toggle {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        padding: 10px;
+    }
+
+    .dark-mode-toggle input[type="checkbox"] {
+        display: none;
+    }
+
+    .toggle-label {
+        cursor: pointer;
+        position: relative;
+        padding-left: 30px;
+        color: #fff;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+    }
+
+    .toggle-label .toggle-icon {
+        margin-right: 5px;
+        font-size: 20px;
+        color: #007BFF;
+        transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    /* Adicione um estilo para o modo escuro ativado */
+    .dark-mode .toggle-label .toggle-icon {
+        transform: translateY(-50%) rotate(180deg);
+        color: #fff;
     }
 
     /* Estilos para o conteúdo principal */
     main {
-        margin-top: 100px; /* Adicione margem acima do bloco main para criar espaço */
-        padding: 20px; /* Adicione algum preenchimento para melhor legibilidade */
-        background-color: rgba(255, 255, 255, 0.8); /* Fundo semi-transparente para melhor legibilidade */
+        margin-top: 20px;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.8);
     }
 
+    /* Adicione estilos para o modo escuro */
+    .dark-mode {
+        background: linear-gradient(to right, #1e1e1e, #333);
+        color: #fff;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .dark-mode header {
+        background-color: #1e1e1e;
+    }
+
+    .dark-mode nav ul li a {
+        color: #fff;
+    }
+
+    .dark-mode .dropdown-content {
+        background-color: #1e1e1e;
+    }
+
+    .dark-mode .dark-mode-toggle .toggle-label {
+        color: #fff;
+    }
+
+    .dark-mode .dark-mode-toggle .toggle-label .toggle-icon {
+        color: #007BFF;
+    }
+
+    .dark-mode main {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    /* Estilos responsivos */
+    @media screen and (max-width: 768px) {
+        /* Estilos para telas menores, como tablets e dispositivos móveis */
+        nav ul {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin: 10px 0;
+        }
+    }
 </style>
 <body>
 <header>
+
     <nav>
         <ul>
             <li><a href="{% url 'portfolio:index' %}">Home</a></li>
@@ -142,11 +205,14 @@
             <li><a href="{% url 'portfolio:blog' %}">Blog</a></li>
             <li><a href="{% url 'portfolio:contacto' %}">Contacto</a></li>
             <li><a href="#footer">Rodapé</a></li>
+            <!-- ... menu ... -->
+            <div class="dark-mode-toggle">
+                <input type="checkbox" id="dark-mode-checkbox">
+                <label for="dark-mode-checkbox" class="toggle-label">
+                    <span class="toggle-icon">🌙</span> Dark Mode
+                </label>
+            </div>
         </ul>
-        <div class="dark-mode-toggle">
-            <input type="checkbox" id="dark-mode-checkbox">
-            <label for="dark-mode-checkbox" class="toggle-label">Dark Mode</label>
-        </div>
     </nav>
 </header>
 
@@ -157,40 +223,39 @@
     {% endblock main %}
 </main>
 
-<footer id="footer" style="background-color: #f8f8f8; padding: 20px 0;">
+<footer id="footer" class="custom-footer">
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                <div class="text-center">
-                    <a href="https://www.ulusofona.pt/" target="_blank">
-                        <img src="{% static 'portfolio/images/logo.png' %}" alt="Logotipo" style="width: 120px;">
-                    </a>
-                </div>
+            <div class="col-md-6 text-left">
+                <a href="https://www.ulusofona.pt/" target="_blank">
+                    <img src="{% static 'portfolio/images/logo.png' %}" alt="Logotipo" style="width: 120px;">
+                </a>
             </div>
-            <div class="col-md-6">
-                <div class="text-center">
-                    <p style="color: black; font-size: 16px; margin-top: 10px;">
-                        Desenvolvido por Betânia Maria Queta &copy; 2023
-                    </p>
-                </div>
+            <div class="col-md-6 text-right">
+                <p style="font-size: 16px; margin-top: 10px;">
+                    Desenvolvido por Betânia Maria Queta &copy; 2023
+                </p>
             </div>
         </div>
     </div>
 </footer>
 
 <script>
-
     $(document).ready(function () {
         const darkModeCheckbox = document.getElementById("dark-mode-checkbox");
 
         darkModeCheckbox.addEventListener("change", toggleDarkMode);
 
         function toggleDarkMode() {
+            const body = document.body;
             const header = document.querySelector("header");
+            const nav = document.querySelector("nav");
             const main = document.querySelector("main");
-            const footer = document.getElementById("footer");
+            const footer = document.querySelector("footer");
 
+            body.classList.toggle("dark-mode");
             header.classList.toggle("dark-mode");
+            nav.classList.toggle("dark-mode");
             main.classList.toggle("dark-mode");
             footer.classList.toggle("dark-mode");
         }
@@ -199,30 +264,30 @@
     particlesJS("particles-js", {
         particles: {
             number: {
-                value: 100, // Número de partículas
+                value: 100,
             },
             color: {
-                value: "#333" // Cor das partículas
+                value: "#333"
             },
             shape: {
-                type: "circle", // Forma das partículas
+                type: "circle",
             },
             opacity: {
-                value: 0.7, // Opacidade das partículas
+                value: 0.7,
             },
             size: {
-                value: 3, // Tamanho das partículas
+                value: 3,
             },
             line_linked: {
                 enable: true,
-                distance: 150, // Distância entre as partículas ligadas
+                distance: 150,
                 color: "#333",
                 opacity: 0.4,
                 width: 1
             },
             move: {
                 enable: true,
-                speed: 1, // Velocidade das partículas
+                speed: 1,
             }
         },
         interactivity: {

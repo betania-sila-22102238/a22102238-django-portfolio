@@ -12,15 +12,17 @@
             <li class="cadeira-info-item">Tópicos Abordados: {{ cadeira.topicos_abordados }}</li>
             <!-- Adicione outras informações da cadeira conforme necessário -->
         </ul>
-
-        <!-- Botões para editar e remover a cadeira -->
-        <div class="cadeira-opcoes">
-            <form method="post" action="{% url 'portfolio:remover_cadeira' cadeira.id %}">
-                {% csrf_token %}
-                <button class="remover-button" type="submit">Remover Cadeira</button>
-            </form>
-            <a class="editar-link" href="{% url 'portfolio:editar_cadeira' cadeira.id %}">Editar Cadeira</a>
-        </div>
+        <!-- Verificar se o usuário está autenticado antes de mostrar as opções de editar e remover -->
+        {% if user.is_authenticated %}
+            <!-- Botões para editar e remover a cadeira -->
+            <div class="cadeira-opcoes">
+                <form method="post" action="{% url 'portfolio:remover_cadeira' cadeira.id %}">
+                    {% csrf_token %}
+                    <button class="remover-button" type="submit">Remover Cadeira</button>
+                </form>
+                <a class="editar-link" href="{% url 'portfolio:editar_cadeira' cadeira.id %}">Editar Cadeira</a>
+            </div>
+        {% endif %}
     </section>
 
     <style>
