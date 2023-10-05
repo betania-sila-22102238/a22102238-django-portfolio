@@ -1,0 +1,205 @@
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Betânia Maria">
+    <meta name="description" content="Website sobre Bubaque">
+    <meta name="keywords" content="palavras chave">
+    <title>Animações</title>
+
+    <style>
+        /* Estilo para o menu */
+        nav {
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+        }
+
+        nav li {
+            margin: 0 10px;
+        }
+
+        nav a {
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ddd;
+        }
+
+        #myDiv {
+            width: 400px;
+            height: 250px;
+            background-image: url(deisi-inverse.svg);
+            background-color: rgb(18, 196, 209);
+            border: 1px solid black;
+            transform: rotateZ(0deg);
+            transition: width 2s;
+        }
+
+        #myDiv:hover {
+            width: 910px;
+        }
+
+        img {
+            /* para tornar imagem redonda */
+            border-radius: 80%;
+            /* experimente a animação roda-encolhe */
+            animation-name: roda;
+            animation-duration: 20s;
+            /* para a animação nunca parar */
+            animation-iteration-count: infinite;
+            /* por defeito acelera no inicio e desacelera no fim. aqui fica uniforme */
+            animation-timing-function: linear;
+        }
+
+        /* animação */
+        @keyframes roda {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        /* animação */
+        @keyframes roda-encolhe {
+            0% {
+                transform: rotate(0deg);
+                width: 200px;
+            }
+
+            50% {
+                transform: rotate(180deg);
+                width: 100px;
+            }
+
+            100% {
+                transform: rotate(360deg);
+                width: 200px;
+            }
+        }
+
+        #meuDesenho {
+            width: 300px;
+            height: 300px;
+            background-image: url(image.svg);
+            background-color: rgb(18, 196, 209);
+            border: 1px solid black;
+            transform: rotateZ(0deg);
+            transition: width 2s;
+        }
+
+        #meuDesenho:hover {
+            width: 600px;
+        }
+
+        .poema {
+            margin: 0 auto;
+            width: 80%;
+            font-family: Arial, sans-serif;
+        }
+
+        .quadra {
+            margin-bottom: 2em;
+        }
+
+        .quadra p {
+            margin: 0;
+            transition: color 0.5s ease-in-out;
+        }
+
+        .quadra:first-child p:first-child {
+            font-size: 1.5em;
+        }
+
+
+        .quadra:nth-child(2) p:nth-child(2) {
+            transform: rotate(3deg);
+        }
+
+        .quadra:nth-child(3) p:nth-child(3) {
+            color: #ff0000;
+        }
+
+        .quadra:last-child p:last-child {
+            font-style: italic;
+        }
+
+        .quadra:hover p {
+            color: #008000;
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <ul>
+                <li><a href="index.html">Página Principal</a></li>
+            </ul>
+        </ul>
+    </nav>
+
+
+    <h1>Deisi</h1>
+    <p>Departamento de Engenharia Informática e Sistemas de Informação.</p>
+    <br>
+    <div id="myDiv">
+    </div>
+
+    <h1> Girassóis </h1>
+    <p>Os girassóis são a prova de que mesmo as coisas mais simples podem trazer alegria.
+        Assim como o girassol gira em direção ao sol, que sua mente se volte para a luz em busca de inspiração e
+        sabedoria.
+    </p>
+
+    <div>
+        <img src="https://source.unsplash.com/random/200x200/?girasol">
+    </div>
+    <br>
+
+    <div id="meuDesenho"></div>
+    <br>
+
+    <div class="poema">
+        <div class="quadra">
+            <p> No jardim de minha alma, </p>
+            <p> Cultivo flores de amor. </p>
+            <p> São pétalas que acalmam, </p>
+            <p>Em noites de dor.</p>
+        </div>
+
+        <div class="quadra">
+            <p>Cada flor é um sonho,</p>
+            <p>Que um dia plantei.</p>
+            <p>E agora vejo o quanto,</p>
+            <p>Elas me fazem sorrir.</p>
+        </div>
+
+        <div class="quadra">
+            <p>O girassol é minha estrela,</p>
+            <p>Que me guia na escuridão.</p>
+            <p>Sua luz é tão bela,</p>
+            <p>Que ilumina meu coração.</p>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

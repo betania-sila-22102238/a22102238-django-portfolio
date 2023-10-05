@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html lang="pt">
+
+<head>
+
+    <Bubaque>
+
+        <meta charset="utf-8">
+
+        <meta name="author" content="Betânia Maria">
+
+        <meta name="description" content="Website sobre Bubaque">
+
+        <meta name="keywords" content="palavras chave">
+
+        <link rel="stylesheet" type="text/css" href="estilos.css">
+
+</head>
+
+<body>
+
+    <header>
+
+        <h1>Bubaque</h1>
+
+
+        <figure>
+
+            <img src="images/mango-lodge.jpg" alt="Bubaque">
+            <br>
+            <details>
+                <figcaption>
+                    <p>Paraíso escondido</p>
+                </figcaption>
+            </details>
+
+        </figure>
+
+
+    </header>
+
+    <style>
+        h1 {
+            color: rgb(0, 179, 255);
+        }
+    </style>
+
+    <nav>
+
+        <b><a href="index.html">Home |</a></b>
+
+        <b><a href="info.html">Informação |</a></b>
+
+        <b><a href="multimedia.html">Multimédia |</a></b>
+
+        <b><a href="local.html">Localização |</a></b>
+
+        <b><a href="quizz.html">Quizz |</a></b>
+
+        <b><a href="html5-css.html">Html e Css |</a></b>
+
+    </nav>
+
+
+    <main>
+
+        <section>
+
+            <h3>Quizz</h3>
+
+            <p>"Bem-vindo à nossa página sobre Bubaque! Se você é um entusiasta da viagem ou simplesmente mora na
+                cidade, nosso quizz de conhecimento é a maneira perfeita de testar seus conhecimentos sobre essa
+                incrível cidade. Com uma variedade de perguntas sobre a história, cultura, atrações turísticas e muito
+                mais, você pode descobrir o quanto realmente sabe sobre Bubaque. Então, vamos começar a testar seus
+                conhecimentos e descobrir se você é um verdadeiro especialista em Bubaque!"</p>
+
+        </section>
+
+        <section>
+
+            <fieldset>
+
+                <legend>Quizz sobre Bubaque</legend>
+
+                <fieldset>
+                    <legend>info</legend>
+
+                    <form id="form1" action="/processar-formulario" method="post">
+
+                        <label for="nome">Nome:</label>
+
+                        <input type="text" id="nome" name="nome" size="30" form="form1" autofocus><br><br>
+
+                        <label for="apelido">Apelido:</label>
+
+                        <input type="text" id="apelido" name="apelido"><br><br>
+
+                    </form>
+
+                    <form id="form2" action="/processar-outro-formulario" method="post">
+
+                        <label for="email">Email:</label>
+
+                        <input type="email" id="email" name="email" form="form2">
+
+                    </form>
+
+                </fieldset>
+
+                <fieldset>
+
+                    <legend>Perguntas</legend>
+
+                    <label for="continente">
+                        <p>
+                            Em que continente está localizado Bubaque:
+                        </p>
+
+                    </label>
+
+                    <input type="text" id="continente" name="continente" list="opcoes-continente">
+                    <datalist id="opcoes-continente">
+                        <option value="América">
+                        <option value="África">
+                        <option value="Ásia">
+                        <option value="Europa">
+                        <option value="Oceania">
+                        <option value="Antártida">
+
+                    </datalist>
+
+                    <label>
+                        <p>Qual é o nome da ilha onde está localizada a cidade de Bubaque?</p>
+                    </label>
+                    <input type="text" name="pergunta1" required>
+
+                    <label>
+                        <p> Em que região e setor administrativo a ilha de Bubaque está localizada?</p>
+                    </label>
+
+                    <select name="pergunta2" required>
+                        <option value="">Selecione uma opção</option>
+                        <option value="Região de Bolama e Setor de Bubaque">Região de Bolama e Setor de Bubaque</option>
+                        <option value="Região de Cacheu e Setor de Caió">Região de Cacheu e Setor de Caió</option>
+                        <option value="Região de Oio e Setor de Farim">Região de Oio e Setor de Farim</option>
+                    </select>
+
+                    <label for="País">País:</label>
+
+                    <input type="text" id="País" name="País" autocomplete="on">
+
+                    <label for="data">
+                        <p>
+                            Qual é a data da independência do país onde se encontra Bubaque:
+                        </p>
+
+                    </label>
+
+                    <input type="date" id="data" name="data">
+
+                    <label for="cor">
+                        <p>
+                            Selecione as 4 cores que compõem a bandeira do país onde se encontra Bubaque:
+                        </p>
+                    </label>
+
+                    <input type="color" id="cor" name="cor">
+                    <input type="color" id="cor" name="cor">
+                    <input type="color" id="cor" name="cor">
+                    <input type="color" id="cor" name="cor">
+
+                    <p>Qual foi a ilha mais afetada pela presença dos europeus?</p>
+
+                    <label>
+                        <input type="radio" name="resposta1" value="bubaque">
+                        Bubaque
+                    </label><br>
+                    <label>
+                        <input type="radio" name="resposta1" value="bolama">
+                        Bolama
+                    </label><br>
+                    <label>
+                        <input type="radio" name="resposta1" value="bijagos">
+                        Bijagós
+                    </label><br>
+
+                    <p>Que tipo de atividades os alemães realizaram em Bubaque?</p>
+
+                    <label>
+                        <input type="checkbox" name="resposta2" value="extraccao-oleo-palma">
+                        Construíram uma fábrica para extração do óleo de palma.
+                    </label><br>
+                    <label>
+                        <input type="checkbox" name="resposta2" value="porto">
+                        Construíram um porto para navios de grande tonelagem.
+                    </label><br>
+                    <label>
+                        <input type="checkbox" name="resposta2" value="quinta">
+                        Construíram uma quinta experimental para cultivo de algodão.
+                    </label><br>
+
+                    <p>Qual o nome da área onde os alemães construíram uma quinta experimental em Bubaque?</p>
+
+                    <label>
+                        <input type="text" name="resposta3">
+                    </label><br>
+
+                    <label>
+                        <p> Qual é a área total da ilha de Bubaque? </p>
+                    </label>
+                    <input type="number" name="pergunta3" required>
+
+                    <label>
+                        <p>Quantos habitantes aproximadamente vivem na ilha de Bubaque?</p>
+                    </label>
+                    <input type="range" name="pergunta4" min="0" max="20000" step="100" required>
+
+                    <label>
+                        <p> O que faz da ilha de Bubaque uma importante atração turística na Guiné-Bissau? </p>
+                    </label>
+                    <textarea name="pergunta5" rows="4" cols="50" placeholder="Digite sua resposta aqui..."
+                        required></textarea>
+
+
+                    <input type="submit" value="Enviar">
+
+                    <form method="POST" action="mailto: betaniamariaqueta05@gmail.com" enctype="multipart/form-data">
+                    </form>
+
+                </fieldset>
+            </fieldset>
+
+        </section>
+
+
+    </main>
+
+    <footer>
+
+        <p>
+            Betânia Maria Queta Silá, aluna número 22102238, estudante de engenharia informática na
+            ULHT, 2º ano.
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
