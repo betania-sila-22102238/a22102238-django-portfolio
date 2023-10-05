@@ -2,12 +2,64 @@
 
 {% block link %}
     {% load static %}
-    <link rel="stylesheet" href="{% static 'portfolio/css/estilo.css' %}">
-    <link rel="stylesheet" href="{% static 'portfolio/css/stylebackend.css' %}">
 {% endblock %}
 
 
 {% block main %}
+    <style>
+        :root {
+            --primary-color: #333;
+            --secondary-color: #f9f9f9;
+            --font-family: Arial, sans-serif;
+            --font-size: 16px;
+            --line-height: 1.5;
+        }
+
+        body {
+            background-color: var(--secondary-color);
+            font-family: var(--font-family);
+            font-size: var(--font-size);
+            line-height: var(--line-height);
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #backend {
+            background-color: #f2f2f2;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        #backend h2 {
+            font-size: 36px;
+            text-align: center;
+            color: #333333;
+            margin-bottom: 20px;
+        }
+
+        #backend p {
+            font-size: 18px;
+            line-height: 1.5;
+            color: #666666;
+            margin-bottom: 30px;
+        }
+
+        #backend ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #backend li {
+            font-size: 24px;
+            color: #5eabdf;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            background-image: url('https://cdn.iconscout.com/icon/free/png-256/check-441626.png');
+            background-repeat: no-repeat;
+            background-position: 0 10px;
+        }</style>
     <section id="backend">
         <h2>Back-End</h2>
         <p>O back-end é a parte da aplicação web que fica no servidor e é responsável pelo processamento e

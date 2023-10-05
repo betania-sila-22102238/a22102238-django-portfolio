@@ -1,0 +1,89 @@
+{% extends 'portfolio/layout.html' %}
+
+{% block title %}Detalhes da Cadeira - {{ cadeira.nome }}{% endblock %}
+
+{% block main %}
+    <section class="cadeira-detalhes">
+        <h2 class="cadeira-nome">{{ cadeira.nome }}</h2>
+        <ul class="cadeira-info">
+            <li class="cadeira-info-item">Ano: {{ cadeira.ano }}</li>
+            <li class="cadeira-info-item">Semestre: {{ cadeira.semestre }}</li>
+            <li class="cadeira-info-item">Ano Letivo: {{ cadeira.ano_letivo_frequentado }}</li>
+            <li class="cadeira-info-item">Tópicos Abordados: {{ cadeira.topicos_abordados }}</li>
+            <!-- Adicione outras informações da cadeira conforme necessário -->
+        </ul>
+
+        <!-- Botões para editar e remover a cadeira -->
+        <div class="cadeira-opcoes">
+            <form method="post" action="{% url 'portfolio:remover_cadeira' cadeira.id %}">
+                {% csrf_token %}
+                <button class="remover-button" type="submit">Remover Cadeira</button>
+            </form>
+            <a class="editar-link" href="{% url 'portfolio:editar_cadeira' cadeira.id %}">Editar Cadeira</a>
+        </div>
+    </section>
+
+    <style>
+        .cadeira-detalhes {
+            background-color: #f1f1f1;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 20px;
+        }
+
+        .cadeira-nome {
+            font-size: 28px;
+            color: pink;
+            margin-bottom: 10px;
+        }
+
+        .cadeira-info {
+            list-style: none;
+            padding: 0;
+        }
+
+        .cadeira-info-item {
+            margin-bottom: 10px;
+        }
+
+        .cadeira-opcoes {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .remover-button,
+        .editar-link {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .remover-button {
+            background-color: #dc3545;
+            color: #fff;
+        }
+
+        .remover-button:hover {
+            background-color: #c82333;
+        }
+
+        .editar-link {
+            background-color: #a41515;
+            color: #fff;
+        }
+
+        .editar-link:hover {
+            background-color: #0056b3;
+        }
+
+        /* Adicione outros estilos e animações conforme necessário para personalizar sua página. */
+    </style>
+
+{% endblock %}

@@ -1,8 +1,9 @@
 from django.core.exceptions import ValidationError
 from django.db import models
-from django.utils import timezone
-from django.shortcuts import redirect
 
+class Cidade(models.Model):
+    name = models.CharField(max_length=100)
+    country = models.CharField(max_length=100)
 
 class Blog(models.Model):
     nome = models.CharField(max_length=100)
@@ -99,7 +100,6 @@ class ExperienciaProfissional(models.Model):
     empresa = models.CharField(max_length=100)
     cargo = models.CharField(max_length=100)
     periodo = models.CharField(max_length=100)
-    # Outros campos e relacionamentos relevantes
 
 
 class Competencia(models.Model):
@@ -140,7 +140,6 @@ class TFC(models.Model):
     link_relatorio = models.URLField()
     link_repositorio = models.URLField()
     link_video = models.URLField()
-    # Outros campos e relacionamentos relevantes
 
 
 class Tecnologia(models.Model):
@@ -151,7 +150,6 @@ class Tecnologia(models.Model):
     link_site_oficial = models.URLField()
     linguagens_usadas = models.CharField(max_length=100)
     descricao = models.TextField()
-    # Outros campos e relacionamentos relevantes
 
 
 class Pagina(models.Model):
@@ -178,16 +176,3 @@ class Conteudo(models.Model):
         return self.titulo
 
 
-class DadosExtraidos(models.Model):
-    timestamp = models.DateTimeField(default=timezone.now)
-    valor = models.FloatField()
-
-
-class Question(models.Model):
-    question_text = models.CharField(max_length=200)
-
-
-class Choice(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    choice_text = models.CharField(max_length=200)
-    is_correct = models.BooleanField(default=False)

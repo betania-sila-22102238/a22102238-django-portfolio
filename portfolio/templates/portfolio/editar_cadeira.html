@@ -1,0 +1,12 @@
+{% extends 'portfolio/layout.html' %}
+
+{% block title %}Editar Cadeira - {{ cadeira.nome }}{% endblock %}
+
+{% block main %}
+    <h2>Editar Cadeira - {{ cadeira.nome }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar Alterações</button>
+    </form>
+{% endblock %}

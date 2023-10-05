@@ -4,25 +4,122 @@
     <meta charset="UTF-8">
     <title>Portfólio</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'portfolio/css/estilo.css' %}">
-    <style>
-        #myVideo {
-            position: fixed;
-            right: 0;
-            bottom: 0;
-            min-width: 100%;
-            min-height: 100%;
-            z-index: -1;
-        }
-    </style>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
+<style>
+    /* Estilos para o Particle.js em segundo plano */
+    #particles-js {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+    }
+
+    /* Reset de estilos básicos */
+    body, h1, h2, h3, p, ul, li {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    /* Estilos para o cabeçalho e navegação */
+    body {
+        background-color: #f8f8f8;
+        color: #333;
+    }
+
+    header {
+        background-color: #fff; /* Fundo branco para o cabeçalho */
+        color: #333;
+    }
+
+    /* Estilos para a navegação */
+    nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center; /* Centralizar os itens horizontalmente */
+    }
+
+    nav ul li {
+        margin: 0 20px;
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        color: #333;
+        font-size: 18px;
+        padding: 10px 20px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+        background-color: #ff9900; /* Fundo laranja no hover */
+        color: #fff; /* Texto branco no hover */
+        border-radius: 5px; /* Cantos arredondados no hover */
+    }
+
+
+    /* Estilos para o botão de alternância de dark mode */
+    .toggle-label::before {
+        content: "\f186"; /* Código do ícone de lua (pode ser alterado para um ícone de sua escolha) */
+        font-family: 'Font Awesome'; /* Adicione um ícone usando uma fonte de ícones, como Font Awesome */
+        font-size: 18px;
+        color: #333;
+        margin-right: 4px;
+        transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    #dark-mode-checkbox:checked + .toggle-label::before {
+        content: "\f185"; /* Código do ícone de lua (pode ser alterado para um ícone de sua escolha) */
+        transform: rotate(30deg);
+        color: #ff9900; /* Laranja no modo escuro */
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 0.3s ease;
+    }
+
+    li.dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* Estilos para o conteúdo principal */
+    main {
+        margin-top: 100px; /* Adicione margem acima do bloco main para criar espaço */
+        padding: 20px; /* Adicione algum preenchimento para melhor legibilidade */
+        background-color: rgba(255, 255, 255, 0.8); /* Fundo semi-transparente para melhor legibilidade */
+    }
+
+</style>
 <body>
 <header>
     <nav>
         <ul>
             <li><a href="{% url 'portfolio:index' %}">Home</a></li>
             <li class="dropdown">
-                <a href="">Sobre Mim</a>
+                <a href="#">Sobre Mim</a>
                 <div class="dropdown-content">
                     <a href="{% url 'portfolio:lista_cadeiras' %}">Licenciatura</a>
                     <a href="{% url 'portfolio:educacao' %}">Educação</a>
@@ -34,59 +131,109 @@
 
             <li><a href="{% url 'portfolio:projetos' %}">Projetos</a></li>
             <li class="dropdown">
-                <a href="">Web</a>
+                <a href="#">Web</a>
                 <div class="dropdown-content">
                     <a href="{% url 'portfolio:tecnologias' %}">Tecnologias Existentes</a>
                     <a href="{% url 'portfolio:exercicios' %}">JavaScript Calculadora</a>
-                    <a href="{% url 'portfolio:labs' %}">Laboratórios</a>
+                    <a href="#">Laboratórios</a>
                     <a href="https://www.publico.pt/">Notícias</a>
-                    <a href="{% url 'portfolio:quiz' %}">Quizz</a>
                 </div>
             </li>
-            <li><a href="{% url 'portfolio:web_scrapping' %}">Web Scrapping</a></li>
             <li><a href="{% url 'portfolio:blog' %}">Blog</a></li>
             <li><a href="{% url 'portfolio:contacto' %}">Contacto</a></li>
             <li><a href="#footer">Rodapé</a></li>
         </ul>
-        <a href="#" class="dark-toggle"><i class="fas fa-moon"></i></a>
-        <a href="#" class="toggle-video"><i class="fas fa-video"></i></a>
-        <div class="animation start-home"></div>
+        <div class="dark-mode-toggle">
+            <input type="checkbox" id="dark-mode-checkbox">
+            <label for="dark-mode-checkbox" class="toggle-label">Dark Mode</label>
+        </div>
     </nav>
-
 </header>
-<video autoplay muted loop id="myVideo">
-    <source src="{% static 'portfolio/videos/SaveTube.App-No Copyright Video, Background, Green Screen, Motion Graphics, Animated Background, Copyright Free-(144p).mp4' %}"
-            type="video/mp4">
-</video>
+
+<div id="particles-js"></div>
+
 <main>
     {% block main %}
     {% endblock main %}
 </main>
 
-<footer id="footer">
+<footer id="footer" style="background-color: #f8f8f8; padding: 20px 0;">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <p class="text-center">Desenvolvido por <strong>Betânia Maria Queta</strong> <a href="#"><img
-                        src="{% static 'portfolio/images/logo.png' %}" alt="Logotipo" style="width: 35px;"></a> 2023</p>
+                <div class="text-center">
+                    <a href="https://www.ulusofona.pt/" target="_blank">
+                        <img src="{% static 'portfolio/images/logo.png' %}" alt="Logotipo" style="width: 120px;">
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="text-center">
+                    <p style="color: black; font-size: 16px; margin-top: 10px;">
+                        Desenvolvido por Betânia Maria Queta &copy; 2023
+                    </p>
+                </div>
             </div>
         </div>
     </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
 <script>
-    const darkToggle = document.querySelector('.dark-toggle');
-    const toggleVideo = document.querySelector('.toggle-video');
-    const body = document.body;
 
-    darkToggle.addEventListener('click', function () {
-        body.classList.toggle('dark');
+    $(document).ready(function () {
+        const darkModeCheckbox = document.getElementById("dark-mode-checkbox");
+
+        darkModeCheckbox.addEventListener("change", toggleDarkMode);
+
+        function toggleDarkMode() {
+            const header = document.querySelector("header");
+            const main = document.querySelector("main");
+            const footer = document.getElementById("footer");
+
+            header.classList.toggle("dark-mode");
+            main.classList.toggle("dark-mode");
+            footer.classList.toggle("dark-mode");
+        }
     });
 
-    toggleVideo.addEventListener('click', function () {
-        const video = document.querySelector('#myVideo');
-        video.style.display = (video.style.display === 'none') ? 'block' : 'none';
+    particlesJS("particles-js", {
+        particles: {
+            number: {
+                value: 100, // Número de partículas
+            },
+            color: {
+                value: "#333" // Cor das partículas
+            },
+            shape: {
+                type: "circle", // Forma das partículas
+            },
+            opacity: {
+                value: 0.7, // Opacidade das partículas
+            },
+            size: {
+                value: 3, // Tamanho das partículas
+            },
+            line_linked: {
+                enable: true,
+                distance: 150, // Distância entre as partículas ligadas
+                color: "#333",
+                opacity: 0.4,
+                width: 1
+            },
+            move: {
+                enable: true,
+                speed: 1, // Velocidade das partículas
+            }
+        },
+        interactivity: {
+            detect_on: "canvas",
+            events: {
+                onhover: {
+                    enable: true,
+                    mode: "grab"
+                }
+            }
+        }
     });
 </script>
 </body>

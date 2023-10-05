@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Pagina, Secao, Conteudo, Educacao, Comentario
+from .models import Pagina, Secao, Conteudo, Educacao, Comentario, Cadeira
 
 
 class PaginaForm(forms.ModelForm):
@@ -29,3 +29,9 @@ class ComentarioForm(forms.ModelForm):
         widgets = {
             'texto': forms.Textarea(attrs={'rows': 4, 'cols': 40})
         }
+
+
+class AdicionarCadeiraForm(forms.ModelForm):
+    class Meta:
+        model = Cadeira
+        fields = '__all__'  # Isso permite que todos os campos do modelo sejam incluídos no formulário

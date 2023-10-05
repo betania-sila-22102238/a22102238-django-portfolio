@@ -1,114 +1,63 @@
-/* definir uma fonte padrão para todo o documento */
-body {
-  font-family: Arial, sans-serif;
-}
-
-/* definir estilos para o contêiner principal */
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* estilos para imagens dentro do contêiner */
-img {
-  max-width: 100%;
-}
-
-/* estilos para rótulos (labels) */
-label {
-  margin-right: 10px;
-}
-
-/* estilos para campos de entrada de texto */
-input[type="text"] {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  margin-right: 10px;
-  margin-bottom: 10px;
-}
-
-/* estilos para botões */
-button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 3px;
-  color: #fff;
-  background-color: #007bff;
-  cursor: pointer;
-  margin-right: 5px;
-}
-
-/* estilos para botões quando o mouse passa por cima */
-button:hover {
-  background-color: #0069d9;
-}
-
-
-/* estilos para o contêiner da calculadora */
+/* Estilos para a calculadora */
 .calculator-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 50px;
+    text-align: center;
+    background-color: #282c36;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    width: 320px; /* Largura da calculadora */
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
 }
 
-/* estilos para campos de entrada de texto dentro da calculadora */
-.calculator-container input[type="text"] {
-  width: 200px;
+.calculator__display {
+    background-color: #1f2129;
+    color: #ffffff;
+    font-size: 2em; /* Tamanho da fonte do visor */
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* estilos para botões dentro da calculadora */
-.calculator-container button {
-  width: 80px;
+.calculator__keys {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Quatro colunas na matriz */
+    grid-gap: 10px;
 }
 
-/* estilos para o resultado da calculadora */
-#calculator-result {
-  margin-top: 10px;
-  font-size: 24px;
-  font-weight: bold;
+.calculator-key {
+    font-size: 1.5em; /* Tamanho da fonte dos botões */
+    padding: 20px;
+    background-color: #41464e;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
 }
 
-/* estilos para elementos com a classe "name-element" */
-.name-element {
-  font-weight: bold;
-  color: blue;
+.calculator-key.operator-key {
+    background-color: #f2a93b; /* Cor dos botões de operador */
 }
 
-/* estilos para o elemento com o ID "date-element" */
-#date-element {
-  display: flex;
-  font-size: 24px;
-  font-weight: bold;
-  margin-top: 50px;
-  justify-content: center;
+.calculator-key:hover {
+    background-color: #50555c;
 }
 
-#dark-mode-button {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  border: none;
-  background-color: transparent;
-  font-size: 16px;
-  cursor: pointer;
-  color: white;
+.calculator-key:active {
+    transform: scale(0.95);
 }
 
-#dark-mode-button:hover {
-  text-decoration: underline;
+/* Estilos para o botão de igual */
+.calculator-key.calculate-key {
+    background-color: #ff5e5e; /* Cor do botão de igual */
+    font-weight: bold;
+    color: #ffffff;
 }
 
-.dark-mode {
-  background-color: #282c35;
-  color: #fff;
+.calculator-key.calculate-key:hover {
+    background-color: #ff7b7b;
 }
 
-.light-mode {
-  background-color: #fff;
-  color: #000;
-}
-
-
+/* Outros estilos e ajustes de layout conforme necessário */

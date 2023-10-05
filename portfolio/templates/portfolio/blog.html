@@ -1,58 +1,56 @@
 {% extends 'portfolio/layout.html' %}
 
-{% block styles %}
-<style>
-    /* Estilos específicos para os artigos */
-    .artigo {
-        background-color: #fff;
-        padding: 20px;
-        margin-bottom: 20px;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .artigo h3 {
-        color: #333;
-        font-size: 30px;
-        margin-bottom: 10px;
-    }
-
-    .artigo p {
-        color: #555;
-        font-size: 16px;
-        margin-bottom: 15px;
-    }
-</style>
-{% endblock %}
-
 {% block main %}
-<h1>{{ blog.nome }}</h1>
+    <style>
+        /* Estilos específicos para os artigos */
+        .artigo {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
 
-<div class="row">
-    <div class="col-6">
-        <h2>Áreas</h2>
-        <ul>
-            {% for area in areas %}
-                <li>{{ area.nome }}</li>
+        .artigo h3 {
+            color: white;
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .artigo p {
+            color: #555;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+    </style>
+
+    <h1>{{ blog.nome }}</h1>
+
+    <div class="row">
+        <div class="col-6">
+            <h2>Áreas</h2>
+            <ul>
+                {% for area in areas %}
+                    <li>{{ area.nome }}</li>
+                {% endfor %}
+            </ul>
+
+            <h2>Autores</h2>
+            <ul>
+                {% for autor in autores %}
+                    <li>{{ autor.nome }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="col-6">
+            <h2>Artigos</h2>
+            {% for artigo in artigos %}
+                <div class="artigo">
+                    <h3>{{ artigo.titulo }}</h3>
+                    <p>{{ artigo.conteudo }}</p>
+                </div>
             {% endfor %}
-        </ul>
-
-        <h2>Autores</h2>
-        <ul>
-            {% for autor in autores %}
-                <li>{{ autor.nome }}</li>
-            {% endfor %}
-        </ul>
+        </div>
     </div>
-
-    <div class="col-6">
-        <h2>Artigos</h2>
-        {% for artigo in artigos %}
-            <div class="artigo">
-                <h3>{{ artigo.titulo }}</h3>
-                <p>{{ artigo.conteudo }}</p>
-            </div>
-        {% endfor %}
-    </div>
-</div>
 {% endblock %}

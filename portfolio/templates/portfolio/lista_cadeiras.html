@@ -5,46 +5,78 @@
 {% block main %}
     <section class="cadeiras">
         <h2>Engenharia Informática</h2>
-        <ul>
+        <ul class="cadeira-list">
             {% for cadeira in cadeiras %}
-                <li class="cadeira-nome">{{ cadeira.nome }}</li>
-                <li>Ano: {{ cadeira.ano }}</li>
-                <li>Semestre: {{ cadeira.semestre }}</li>
-                <li>Ano Letivo: {{ cadeira.ano_letivo_frequentado }}</li>
-                <li>Tópicos Abordados: {{ cadeira.topicos_abordados }}</li>
-
-                <!-- Outras informações da cadeira -->
+                <li class="cadeira-item">
+                    <a href="{% url 'portfolio:cadeira_detalhes' cadeira.id %}">
+                        <h3 class="cadeira-nome">{{ cadeira.nome }}</h3>
+                    </a>
+                </li>
             {% endfor %}
         </ul>
+
+        <h3>Adicionar Nova Cadeira</h3>
+        <form class="adicionar-form" method="post" action="{% url 'portfolio:adicionar_cadeira' %}">
+            {% csrf_token %}
+            {{ cadeira_form.as_p }}
+            <button class="adicionar-button" type="submit">Adicionar Cadeira</button>
+        </form>
     </section>
 
-    <style>
-        /* Estilos personalizados para a página de cadeiras */
-        .cadeiras {
-            background-color: #f1f1f1;
-            padding: 20px;
-        }
+ <style>
+    .cadeiras {
+        background-color: #f1f1f1;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        margin: 20px;
+        text-align: center; /* Centraliza o conteúdo horizontalmente */
+    }
 
-        .cadeiras h2 {
-            color: #333;
-            font-size: 24px;
-        }
+    h2 {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+    }
 
-        .cadeiras ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
+    .cadeira-list {
+        list-style: none;
+        padding: 0;
+    }
 
-        .cadeiras li {
-            margin-bottom: 10px;
-        }
+    .cadeira-item {
+        margin-bottom: 20px;
+    }
 
-        .cadeiras .cadeira-nome {
-            font-weight: bold;
-            color: #007bff;
-        }
+    .cadeira-nome {
+        font-size: 18px;
+        color: #007bff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
 
-        /* Mais estilos personalizados... */
-    </style>
+    .cadeira-nome:hover {
+        color: #0056b3;
+    }
+
+    .adicionar-form {
+        margin-top: 20px;
+    }
+
+    .adicionar-button {
+        background-color: skyblue;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .adicionar-button:hover {
+        background-color: #218838;
+    }
+</style>
+
 {% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'portfolio/layout.html' %}
+
+{% block title %}Adicionar Cadeira - Página Moderna{% endblock %}
+
+{% block main %}
+    <section class="adicionar-cadeira">
+        <h2>Adicionar Nova Cadeira</h2>
+        <form class="cadeira-form" method="post" action="{% url 'portfolio:adicionar_cadeira' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="adicionar-button" type="submit">Adicionar Cadeira</button>
+        </form>
+    </section>
+
+    <style>
+        /* Estilos CSS personalizados para a página de adicionar cadeira */
+        .adicionar-cadeira {
+            background-color: #f1f1f1;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .cadeira-form {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .cadeira-form label {
+            font-weight: bold;
+        }
+
+        .cadeira-form input[type="text"],
+        .cadeira-form input[type="number"],
+        .cadeira-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .adicionar-button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+{% endblock %}

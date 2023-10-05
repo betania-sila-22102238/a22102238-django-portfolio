@@ -6,19 +6,20 @@
         .interesses {
             text-align: center;
             padding: 50px 0;
-            background-color: lightcoral;
         }
 
         .interesses h2 {
-            font-size: 28px;
+            font-size: 36px;
             color: #333;
             margin-bottom: 20px;
+            font-weight: bold;
         }
 
         .interesses p {
-            font-size: 18px;
-            color: #666;
+            font-size: 20px;
+            color: #555;
             margin-bottom: 20px;
+            line-height: 1.5;
         }
 
         .imagem-pessoal {
@@ -28,31 +29,44 @@
             margin: 0 auto;
             display: block;
             margin-bottom: 20px;
-            overflow: hidden;
+            border: 4px solid #333;
+            position: relative; /* Adicione position relative */
+            overflow: hidden; /* Esconde o conteúdo que excede as dimensões */
         }
 
         .imagem-pessoal img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto; /* Altere a altura para 'auto' para manter a proporção original */
+            object-fit: cover; /* Mantém a proporção e cobre o espaço inteiro */
+            position: absolute; /* Permite o ajuste de posição */
+            top: 50%; /* Move a imagem para metade da altura do contêiner */
+            left: 50%; /* Move a imagem para metade da largura do contêiner */
+            transform: translate(-50%, -50%); /* Centraliza a imagem no contêiner */
         }
 
         .texto-imagem {
-            font-size: 16px;
-            color: #777;
-            margin-bottom: 10px;
+            font-size: 24px;
+            color: #333;
+            margin-top: 10px;
+            font-weight: bold;
         }
     </style>
     <section class="interesses">
-        <h2>Interesses e Hobbies</h2>
         <div class="imagem-pessoal">
-            <img src="{% static 'portfolio/images/betas1.jpg' %}" alt="Imagem Pessoal">
+            <img src="{% static 'portfolio/images/betania.jpg' %}" alt="Imagem Pessoal">
         </div>
-        <p class="texto-imagem">Olá Sou Betânia</p>
-        <p>Além de programar, sou apaixonada por viagens e pela exploração de novos lugares.
-            Adoro conhecer outras culturas e povos, pois acredito que isso me permite compreender melhor
-            a diversidade humana e refletir sobre a riqueza de cada um.</p>
-        <p>Sinta-se à vontade para explorar meu blog e descobrir mais sobre minhas experiências e conhecimentos
-            compartilhados!</p>
+
+        <p class="texto-imagem">Olá, sou Betânia!</p>
+        <p>Além da tecnologia, tenho uma paixão ardente por viagens e pela exploração de novos lugares.
+            Adoro mergulhar em outras culturas e conhecer pessoas de diferentes origens,
+            pois acredito que isso me enriquece como ser humano e me permite compreender a beleza da diversidade.</p>
+        <p>Também tenho um profundo interesse em trabalhos sociais e em contribuir para melhorar a comunidade.
+            Acredito que, por meio do compartilhamento de conhecimentos e experiências,
+            podemos criar um impacto positivo no mundo ao nosso redor.</p>
+        <p>
+            Sinta-se à vontade para explorar meu blog e descobrir mais sobre minhas aventuras, reflexões e contribuições
+            para a comunidade.
+            Espero que você encontre inspiração e motivação ao longo dessa jornada!
+        </p>
     </section>
 {% endblock %}
