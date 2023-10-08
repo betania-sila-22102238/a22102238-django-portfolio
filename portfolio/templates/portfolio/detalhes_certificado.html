@@ -1,33 +1,28 @@
 {% extends 'portfolio/layout.html' %}
 
-{% block title %}Detalhes da Cadeira - {{ cadeira.nome }}{% endblock %}
+{% block title %}Detalhes do certificado - {{ certificado.nome }}{% endblock %}
 
 {% block main %}
-    <section class="cadeira-detalhes">
-        <h2 class="cadeira-nome">{{ cadeira.nome }}</h2>
-        <ul class="cadeira-info">
-            <li class="cadeira-info-item">Ano: {{ cadeira.ano }}</li>
-            <li class="cadeira-info-item">Semestre: {{ cadeira.semestre }}</li>
-            <li class="cadeira-info-item">Ano Letivo: {{ cadeira.ano_letivo_frequentado }}</li>
-            <li class="cadeira-info-item">Tópicos Abordados: {{ cadeira.topicos_abordados }}</li>
-            <li class="cadeira-info-item">{{ cadeira.imagem }}</li>
-            <!-- Adicione outras informações da cadeira conforme necessário -->
+    <section class="certificado-detalhes">
+        <h2 class="certificado-nome">{{ certificado.titulo }}</h2>
+        <ul class="certificado-info">
+            <li class="certificado-info-item">Ano: {{ certificado.certificadoImage }}</li>
         </ul>
         <!-- Verificar se o usuário está autenticado antes de mostrar as opções de editar e remover -->
         {% if user.is_authenticated %}
             <!-- Botões para editar e remover a cadeira -->
-            <div class="cadeira-opcoes">
-                <form method="post" action="{% url 'portfolio:remover_cadeira' cadeira.id %}">
+            <div class="certificado-opcoes">
+                <form method="post" action="{% url 'portfolio:remover_certificado' certificado.id %}">
                     {% csrf_token %}
-                    <button class="remover-button" type="submit">Remover Cadeira</button>
+                    <button class="remover-button" type="submit">Remover Certificado</button>
                 </form>
-                <a class="editar-link" href="{% url 'portfolio:editar_cadeira' cadeira.id %}">Editar Cadeira</a>
+                <a class="editar-link" href="{% url 'portfolio:editar_certificado' certificado.id %}">Editar Certificado</a>
             </div>
         {% endif %}
     </section>
 
     <style>
-        .cadeira-detalhes {
+        .certificado-detalhes {
             background-color: #f1f1f1;
             padding: 20px;
             border-radius: 10px;
@@ -35,19 +30,19 @@
             margin: 20px;
         }
 
-        .cadeira-nome {
+        .certificado-nome {
             font-size: 28px;
             color: pink;
             margin-bottom: 10px;
         }
 
-        .cadeira-info {
+        .certificado-info {
             list-style: none;
             padding: 0;
         }
 
         /* Estilo para a classe 'cadeira-info-item' */
-        .cadeira-info-item {
+        .certificado-info-item {
             /* Estilos de exemplo - personalize conforme necessário */
             list-style: none; /* Remova os marcadores de lista */
             padding: 10px; /* Espaçamento interno */
@@ -67,7 +62,7 @@
         }
 
 
-        .cadeira-opcoes {
+        .certificado-opcoes {
             margin-top: 20px;
             display: flex;
             justify-content: space-between;

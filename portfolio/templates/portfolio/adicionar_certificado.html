@@ -1,0 +1,58 @@
+{% extends 'portfolio/layout.html' %}
+
+{% block title %}Adicionar Certificado - Página Moderna{% endblock %}
+
+{% block main %}
+    <section class="adicionar-certificado">
+        <h2>Adicionar Novo Certificado</h2>
+        <form class="certificado-form" method="post" action="{% url 'portfolio:adicionar_certificado' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="adicionar-button" type="submit">Adicionar Certificado</button>
+        </form>
+    </section>
+
+    <style>
+        /* Estilos CSS personalizados para a página de adicionar cadeira */
+        .adicionar-cadeira {
+            background-color: #f1f1f1;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .certificado-form {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .certificado-form label {
+            font-weight: bold;
+        }
+
+        .certificado-form input[type="text"],
+        .certificado-form input[type="number"],
+        .certificado-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .adicionar-button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+{% endblock %}

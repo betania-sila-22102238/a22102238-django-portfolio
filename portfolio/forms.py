@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Pagina, Secao, Conteudo, Educacao, Comentario, Cadeira
+from .models import Pagina, Secao, Conteudo, Educacao, Comentario, Cadeira,Certificado
 
 
 class PaginaForm(forms.ModelForm):
@@ -21,6 +21,17 @@ class EducacaoForm(forms.ModelForm):
     class Meta:
         model = Educacao
         fields = '__all__'
+
+class CadeiraForm(forms.ModelForm):
+     class Meta:
+         model = Cadeira
+         fields = '__all__'
+
+class CertificadoForm(forms.ModelForm):
+      class Meta:
+          model = Certificado
+          fields = '__all__'
+
 
 class ComentarioForm(forms.ModelForm):
     class Meta:

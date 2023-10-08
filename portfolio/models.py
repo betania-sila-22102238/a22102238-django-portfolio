@@ -72,6 +72,8 @@ class Cadeira(models.Model):
     ects = models.IntegerField()
     ano_letivo_frequentado = models.IntegerField()
     topicos_abordados = models.TextField()
+    imagem = models.ImageField(default='')
+
 
 class Educacao(models.Model):
     curso = models.CharField(max_length=100)
@@ -90,10 +92,7 @@ class Educacao(models.Model):
 
 class Certificado(models.Model):
     titulo = models.CharField(max_length=100)
-
-
-class OutrasHabilitacoees(models.Model):
-    titulo = models.CharField(max_length=100)
+    certificadoImage = models.ImageField()
 
 
 class ExperienciaProfissional(models.Model):
@@ -128,7 +127,6 @@ class Projeto(models.Model):
     link_repositorio = models.URLField()
     link_video = models.URLField()
     # Outros campos e relacionamentos relevantes
-
 
 class TFC(models.Model):
     titulo = models.CharField(max_length=100)

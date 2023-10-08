@@ -7,12 +7,11 @@ app_name = "portfolio"
 
 urlpatterns = [
 
-    path('', views.index_page_view, name='index'),
+    path('index/', views.index_page_view, name='index'),
     path('blog/', views.blog, name='blog'),
     path('contacto/', views.contacto_page_view, name='contacto'),
     path('projetos/', views.projetos_page_view, name='projetos'),
     path('exercicios/', views.exercicios_page_view, name='exercicios'),
-    path('cidades', views.cidades, name='cidades'),
 
     # URLs de autenticação
     path('login/', auth_views.LoginView.as_view(template_name='portfolio/login.html'), name='login'),
@@ -21,14 +20,20 @@ urlpatterns = [
 
     # Sobre Mim
     path('lista_cadeiras/', views.lista_cadeiras, name='lista_cadeiras'),
-    path('cadeira/<int:cadeira_id>/', views.cadeira_detalhes, name='cadeira_detalhes'),
+    path('cadeira_detalhes/<int:cadeira_id>/', views.cadeira_detalhes, name='cadeira_detalhes'),
     path('adicionar_cadeira/', views.adicionar_cadeira, name='adicionar_cadeira'),
     path('remover_cadeira/<int:cadeira_id>/', views.remover_cadeira, name='remover_cadeira'),
     path('editar_cadeira/<int:cadeira_id>/', views.editar_cadeira, name='editar_cadeira'),
-    path('educacao/', views.educacao, name='educacao'),
+
     path('lista_certificados/', views.lista_certificados, name='lista_certificados'),
+    path('certificado_detalhes/<int:certificado_id>/', views.certificado_detalhes, name='certificado_detalhes'),
+    path('adicionar_certificado/', views.adicionar_certificado, name='adicionar_certificado'),
+    path('remover_certificado/<int:certificado_id>/', views.remover_certificado, name='remover_certificado'),
+    path('editar_certificado/<int:certificado_id>/', views.editar_certificado, name='editar_certificado'),
+
+    path('educacao/', views.educacao, name='educacao'),
     path('lista_tfc/', views.lista_tfc, name='lista_tfc'),
-    path('mais_sobre_mim/', views.mais_sobre_mim, name='mais_sobre_mim'),
+    path('', views.mais_sobre_mim, name='mais_sobre_mim'),
     path('listar_secoes/', views.listar_secoes, name='listar_secoes'),
 
     # web

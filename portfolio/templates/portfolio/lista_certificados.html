@@ -1,52 +1,99 @@
 {% extends 'portfolio/layout.html' %}
-{% load static %}
 
-{% block title %}Meus Certificados{% endblock %}
+{% block title %}Cerificados - Página Moderna{% endblock %}
 
 {% block main %}
+    <section class="certificados">
+        <h2>Certificados</h2>
+        <ul class="certificado-list">
+            {% for certificado in certificados %}
+                <li class="certificado-item">
+                    <a href="{% url 'portfolio:certificado_detalhes' certificado.id %}">
+                        <h3 class="certificado-nome">{{ certificado.nome }}</h3>
+                        <img src="{{ certificado.certificadoImage.url }}" alt="{{ certificado.nome }}"
+                             class="certificado-imagem">
+
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <!-- Verificar se o usuário está autenticado antes de mostrar as opções de editar e remover -->
+        {% if user.is_authenticated %}
+            <!-- Botões para editar e remover -->
+            <h3>Adicionar Novo Certificado</h3>
+            <form class="adicionar-form" method="post" action="{% url 'portfolio:adicionar_certificado' %}">
+                {% csrf_token %}
+                {{ certificados.as_p }}
+                <button class="adicionar-button" type="submit">Adicionar Certificado</button>
+            </form>
+        {% endif %}
+    </section>
+
     <style>
-        /* styles.css */
-
-        main {
+        .certificados {
+            background-color: #f1f1f1;
             padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 20px;
+            text-align: center; /* Centraliza o conteúdo horizontalmente */
         }
 
-        button {
-            background-color: #007bff;
-            color: black;
-            padding: 10px 20px;
+        h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .certificado-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .certificado-item {
+            margin-bottom: 20px;
+        }
+
+        .certificado-nome {
+            font-size: 18px;
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .certificado-imagem {
+            max-width: 100px; /* Largura máxima da imagem */
+            max-height: 100px; /* Altura máxima da imagem */
+            border: 1px solid #ccc; /* Borda com cor cinza claro */
+            border-radius: 5px; /* Borda arredondada */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra suave */
+            margin-right: 10px; /* Espaçamento à direita da imagem */
+        }
+
+
+        .certificado-nome:hover {
+            color: #0056b3;
+        }
+
+        .adicionar-form {
+            margin-top: 20px;
+        }
+
+        .adicionar-button {
+            background-color: skyblue;
+            color: #fff;
             border: none;
-            border-radius: 4px;
+            border-radius: 5px;
+            padding: 10px 20px;
             cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        h2{
-            color: black;
-        }
-
-        .colorful {
-            color: #ff9800;
+        .adicionar-button:hover {
+            background-color: #218838;
         }
     </style>
-    <script>
-        // Script para alternar a cor do texto
-        const btnToggle = document.getElementById('btnToggle');
-        const text = document.getElementById('text');
 
-        btnToggle.addEventListener('click', function () {
-            text.classList.toggle('colorful');
-        });
-    </script>
-    <section class="certificates">
-        <div class="certificate">
-            <h2>Certificado do 12º Ano</h2>
-            <img src="{% static 'portfolio/images/certf12an.jpg' %}" alt="Certificado 1">
-        </div>
-
-        <div class="certificate">
-            <h2>Certidão de Frequência 11º Ano</h2>
-            <img src="{% static 'portfolio/images/certf11ano.jpg' %}" alt="Certificado 2">
-        </div>
-
-    </section>
 {% endblock %}
