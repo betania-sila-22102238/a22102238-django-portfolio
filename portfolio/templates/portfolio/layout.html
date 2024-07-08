@@ -2,227 +2,140 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <title>Portfólio</title>
+    <title>{% block title %}Portfólio{% endblock %}</title>
     {% load static %}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-<style>
-    /* Estilos para o Particle.js em segundo plano */
-    #particles-js {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-    }
-
-    /* Reset de estilos básicos */
-    body, h1, h2, h3, p, ul, li {
-        margin: 0;
-        padding: 0;
-    }
-
-    body {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 16px;
-        line-height: 1.6;
-        transition: background-color 0.3s ease;
-    }
-
-    /* Estilos para o cabeçalho */
-    header {
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-        padding: 20px 0;
-        position: relative;
-        z-index: 1;
-        transition: background-color 0.3s ease;
-    }
-
-    /* Estilos para a navegação */
-    nav ul {
-        list-style: none;
-        display: flex;
-        justify-content: space-between;
-    }
-
-    nav ul li {
-        margin: 0 20px;
-        position: relative;
-    }
-
-    nav ul li a {
-        text-decoration: none;
-        color: black;
-        font-size: 18px;
-        padding: 10px 20px;
-        transition: background-color 0.3s ease, color 0.3s ease;
-        border-radius: 5px;
-        display: block;
-    }
-
-    nav ul li a:hover {
-        background-color: lightcoral;
-        color: #fff;
-    }
-
-    /* Estilos para o dropdown */
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #333;
-        min-width: 160px;
-        z-index: 1;
-        border-radius: 5px;
-    }
-
-    .dropdown-content a {
-        color: #fff;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-    }
-
-    nav ul li:hover .dropdown-content {
-        display: block;
-    }
-
-    /* Estilos para o menu de alternância de modo escuro */
-    .dark-mode-toggle {
-        display: flex;
-        align-items: center;
-        padding: 10px;
-    }
-
-    .dark-mode-toggle input[type="checkbox"] {
-        display: none;
-    }
-
-    .toggle-label {
-        cursor: pointer;
-        position: relative;
-        padding-left: 30px;
-        color: #fff;
-        font-size: 18px;
-        display: flex;
-        align-items: center;
-    }
-
-    .toggle-label .toggle-icon {
-        margin-right: 5px;
-        font-size: 20px;
-        color: #007BFF;
-        transition: transform 0.3s ease, color 0.3s ease;
-    }
-
-    /* Adicione um estilo para o modo escuro ativado */
-    .dark-mode .toggle-label .toggle-icon {
-        transform: translateY(-50%) rotate(180deg);
-        color: #fff;
-    }
-
-    /* Estilos para o conteúdo principal */
-    main {
-        margin-top: 20px;
-        padding: 20px;
-        background-color: rgba(255, 255, 255, 0.8);
-    }
-
-    /* Adicione estilos para o modo escuro */
-
-    .dark-mode header {
-        background-color: #1e1e1e;
-    }
-
-    .dark-mode nav ul li a {
-        color: #fff;
-    }
-
-    .dark-mode .dropdown-content {
-        background-color: #1e1e1e;
-    }
-
-    .dark-mode .dark-mode-toggle .toggle-label {
-        color: #fff;
-    }
-
-    .dark-mode .dark-mode-toggle .toggle-label .toggle-icon {
-        color: #007BFF;
-    }
-
-    .dark-mode main {
-        background-color: rgba(0, 0, 0, 0.8);
-    }
-
-    /* Estilos para o footer no modo escuro */
-    .dark-mode footer {
-        background-color: #1e1e1e; /* Cor de fundo escura para o footer no modo escuro */
-        color: #fff; /* Cor do texto no modo escuro */
-    }
-
-
-    /* Estilos para telas maiores (igual ou maior que 601px) */
-    @media screen and (min-width: 651px) {
-        #menu-toggle {
-            display: none;
+    <link rel="stylesheet" href="{% static 'portfolio/css/style.css' %}">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            background-color: #f0f0f0;
+            transition: background-color 0.3s ease;
         }
-    }
 
-    /* Estilos para dispositivos móveis (menor que 601px) */
-    @media screen and (max-width: 650px) {
-        nav ul {
-            display: none; /* Oculte a lista de navegação */
-            list-style: none;
-            padding: 0;
+        header {
+            background-color: #282c34;
+            padding: 20px 0;
             position: relative;
-            top: 60px; /* Ajuste conforme necessário */
-            left: auto;
-            width: 100%;
-            text-align: center;
-            z-index: 0; /* Para garantir que o menu fique acima de outros elementos */
+            z-index: 1;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
-        nav ul li {
+        header nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
             margin: 0;
             padding: 0;
         }
 
-        nav ul li a {
-            color: black; /* Cor do texto */
+        header nav ul li {
+            position: relative;
+        }
+
+        header nav ul li a {
             text-decoration: none;
+            color: white;
             font-size: 18px;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border-radius: 5px;
             display: block;
-            padding: 15px;
-            transition: background-color 0.3s ease;
         }
 
-        nav ul li a:hover {
-            background-color: pink; /* Cor de fundo ao passar o mouse */
+        header nav ul li a:hover {
+            background-color: #61dafb;
+            color: #282c34;
         }
 
-        #menu-toggle {
-            display: block; /* Mostre o botão de menu */
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            cursor: pointer;
-            color: #fff; /* Cor do ícone do menu */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #444;
+            min-width: 160px;
+            z-index: 1;
+            border-radius: 5px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        main {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #282c34;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .custom-footer p {
+            margin: 0;
+        }
+
+        .hero {
+            position: relative;
+            background-image: url('{% static 'portfolio/images/port3.jpeg' %}');
+            background-size: cover;
+            background-position: center;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
             font-size: 24px;
-            z-index: 2; /* Para garantir que o botão fique acima do menu */
+            max-width: 80%;
         }
 
-        /* Estilo para mostrar a lista de navegação ao tocar no botão de menu */
-        #menu-toggle.active + nav ul {
-            display: block;
+        @media screen and (max-width: 767px) {
+            header nav ul {
+                flex-direction: column;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
         }
-    }
-</style>
+    </style>
+    {% block extra_styles %}{% endblock %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+</head>
 <body>
 <header>
-     <button id="menu-toggle">☰ Menu</button>
     <nav>
         <ul class="open">
             <li><a href="{% url 'portfolio:index' %}">Home</a></li>
@@ -231,7 +144,6 @@
                 <div class="dropdown-content">
                     <a href="{% url 'portfolio:lista_cadeiras' %}">Licenciatura</a>
                     <a href="{% url 'portfolio:educacao' %}">Educação</a>
-                    <a href="{% url 'portfolio:lista_certificados' %}">Certificados</a>
                     <a href="{% url 'portfolio:competencias' %}">Aptidões e competências pessoais</a>
                     <a href="{% url 'portfolio:mais_sobre_mim' %}">Interesses e hobbies</a>
                 </div>
@@ -240,125 +152,30 @@
             <li class="dropdown">
                 <a href="#">Web</a>
                 <div class="dropdown-content">
-                    <a href="{% url 'portfolio:tecnologias' %}">Tecnologias Existentes</a>
                     <a href="{% url 'portfolio:exercicios' %}">Calculadora</a>
-                    <a href="#">Laboratórios</a>
+                    <a href="http://betas.pythonanywhere.com/">Laboratórios</a>
                     <a href="https://www.publico.pt/">Notícias</a>
                 </div>
             </li>
-            <li><a href="{% url 'portfolio:blog' %}">Blog</a></li>
             <li><a href="{% url 'portfolio:contacto' %}">Contacto</a></li>
             <li><a href="#footer">Rodapé</a></li>
-            <div class="dark-mode-toggle">
-                <input type="checkbox" id="dark-mode-checkbox">
-                <label for="dark-mode-checkbox" class="toggle-label">
-                    <span class="toggle-icon">🌙</span> Dark Mode
-                </label>
-            </div>
         </ul>
     </nav>
 </header>
 <div id="particles-js"></div>
 <main>
-    {% block main %}
-    {% endblock main %}
+    {% block main %}{% endblock %}
 </main>
-
 <footer id="footer" class="custom-footer">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 text-left">
-                <a href="https://www.ulusofona.pt/" target="_blank">
-                    <img src="{% static 'portfolio/images/logo.png' %}" alt="Logotipo" style="width: 120px;">
-                </a>
-            </div>
-            <div class="col-md-6 text-right">
-                <p style="font-size: 16px; margin-top: 10px;">
-                    Desenvolvido por Betânia Maria Queta &copy; 2023
-                </p>
+            <div class="col-md-12 text-center">
+                <p>Desenvolvido por Betânia Maria Queta &copy; 2024</p>
             </div>
         </div>
     </div>
 </footer>
-
-
-<script>
-    $(document).ready(function () {
-        const darkModeCheckbox = document.getElementById("dark-mode-checkbox");
-        darkModeCheckbox.addEventListener("change", toggleDarkMode);
-
-        function toggleDarkMode() {
-            const body = document.body;
-            const header = document.querySelector("header");
-            const nav = document.querySelector("nav");
-            const main = document.querySelector("main");
-            const footer = document.querySelector("footer");
-            body.classList.toggle("dark-mode");
-            header.classList.toggle("dark-mode");
-            nav.classList.toggle("dark-mode");
-            main.classList.toggle("dark-mode");
-            footer.classList.toggle("dark-mode");
-        }
-    });
-
-    particlesJS("particles-js", {
-        particles: {
-            number: {
-                value: 100,
-            },
-            color: {
-                value: "#333"
-            },
-            shape: {
-                type: "circle",
-            },
-            opacity: {
-                value: 0.7,
-            },
-            size: {
-                value: 3,
-            },
-            line_linked: {
-                enable: true,
-                distance: 150,
-                color: "#333",
-                opacity: 0.4,
-                width: 1
-            },
-            move: {
-                enable: true,
-                speed: 1,
-            }
-        },
-        interactivity: {
-            detect_on: "canvas",
-            events: {
-                onhover: {
-                    enable: true,
-                    mode: "grab"
-                }
-            }
-        }
-    });
-    $(document).ready(function () {
-        const menuToggle = document.getElementById("menu-toggle");
-        const nav = document.querySelector("nav ul");
-
-        menuToggle.addEventListener("click", function () {
-            nav.classList.toggle("open");
-            menuToggle.classList.toggle("active");
-        });
-
-        // Adicione esta parte para fechar a lista de navegação ao clicar fora dela
-        document.addEventListener("click", function (event) {
-            if (!menuToggle.contains(event.target) && !nav.contains(event.target)) {
-                nav.classList.remove("open");
-                menuToggle.classList.remove("active");
-            }
-        });
-    });
-
-
-</script>
+{% block extra_scripts %}{% endblock %}
+<script src="{% static 'portfolio/js/scriptlayout.js' %}"></script>
 </body>
 </html>

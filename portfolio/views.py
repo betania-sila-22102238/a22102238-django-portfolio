@@ -17,18 +17,22 @@ def remover_cadeira(request, cadeira_id):
     cadeira.delete()
     return redirect('portfolio:lista_cadeiras')
 
+
 def remover_certificado(request, certificado_id):
     certificado = get_object_or_404(Certificado, pk=certificado_id)
     certificado.delete()
     return redirect('portfolio:lista_certificados')
 
+
 def cadeira_detalhes(request, cadeira_id):
     cadeira = get_object_or_404(Cadeira, pk=cadeira_id)
     return render(request, 'portfolio/detalhes_cadeira.html', {'cadeira': cadeira})
 
+
 def certificado_detalhes(request, certificado_id):
     certificado = get_object_or_404(Certificado, pk=certificado_id)
     return render(request, 'portfolio/detalhes_certificado.html', {'certificado': certificado})
+
 
 def editar_cadeira(request, cadeira_id):
     cadeira = get_object_or_404(Cadeira, pk=cadeira_id)
@@ -42,6 +46,7 @@ def editar_cadeira(request, cadeira_id):
         form = AdicionarCadeiraForm(instance=cadeira)
 
     return render(request, 'portfolio/editar_cadeira.html', {'form': form, 'cadeira': cadeira})
+
 
 def editar_certificado(request, certificado_id):
     certificado = get_object_or_404(Cadeira, pk=certificado_id)
@@ -60,6 +65,7 @@ def editar_certificado(request, certificado_id):
 def lista_certificados(request):
     certificados = Certificado.objects.all()
     return render(request, 'portfolio/lista_certificados.html', {'certificados': certificados})
+
 
 def lista_projetos(request):
     projetos = Projeto.objects.all()
@@ -217,10 +223,23 @@ def adicionar_cadeira(request):
         form = AdicionarCadeiraForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('portfolio:lista_cadeiras')  # Redirecionar para a página de listagem de cadeiras após adicionar
+            return redirect(
+                'portfolio:lista_cadeiras')  # Redirecionar para a página de listagem de cadeiras após adicionar
     else:
         form = AdicionarCadeiraForm()
     return render(request, 'portfolio/adicionar_cadeira.html', {'form': form})
+
+
+def editar_cadeira_view(request, cadeira_id):
+    cadeira = get_object_or_404(Cadeira, id=cadeira_id)
+    if request.method == 'POST':
+        form = AdicionarCadeiraForm(request.POST, request.FILES, instance=cadeira)
+        if form.is_valid():
+            form.save()
+            return redirect('portfolio:detalhes_cadeira', cadeira_id=cadeira.id)
+    else:
+        form = AdicionarCadeiraForm(instance=cadeira)
+    return render(request, 'portfolio/editar_cadeira.html', {'form': form, 'cadeira': cadeira})
 
 
 def login_blog(request):
@@ -269,14 +288,17 @@ def competencias(request):
 
     return render(request, 'portfolio/competencias.html', {'competencias': competencias})
 
+
 def adicionar_certificado(request):
     if request.method == 'POST':
-        form = CertificadoForm(request.POST, request.FILES)  # Certifique-se de incluir 'request.FILES' para processar a imagem
+        form = CertificadoForm(request.POST,
+                               request.FILES)  # Certifique-se de incluir 'request.FILES' para processar a imagem
         if form.is_valid():
             certificado = form.save(commit=False)  # Salve o formulário, mas não o banco de dados ainda
             certificado.user = request.user  # Associe o usuário atual (se estiver autenticado) ao certificado
             certificado.save()  # Agora salve no banco de dados com o usuário associado
-            return redirect('portfolio:lista_certificados')  # Redirecione para a página de listagem de certificados após adicionar
+            return redirect(
+                'portfolio:lista_certificados')  # Redirecione para a página de listagem de certificados após adicionar
     else:
         form = CertificadoForm()
 

@@ -72,8 +72,7 @@ class Cadeira(models.Model):
     ects = models.IntegerField()
     ano_letivo_frequentado = models.IntegerField()
     topicos_abordados = models.TextField()
-    imagem = models.ImageField(default='')
-
+    imagem = models.ImageField(upload_to='images/', default='images/default.jpg')
 
 class Educacao(models.Model):
     curso = models.CharField(max_length=100)

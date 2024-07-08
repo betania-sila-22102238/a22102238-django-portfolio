@@ -48,4 +48,5 @@ urlpatterns = [
     path('login_blog', views.login_blog, name='login_blog'),
     path('logout_blog', views.logout_blog, name='logout_blog'),
 
+
 ]

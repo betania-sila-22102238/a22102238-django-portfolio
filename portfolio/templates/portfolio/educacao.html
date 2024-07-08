@@ -2,26 +2,67 @@
 {% load static %}
 {% block main %}
     <style>
-        h2 {
-            display: flex;
-            justify-content: center;
-            color: black;
+        .formacao-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        p {
-            display: flex;
-            justify-content: center;
-            color: black;
+        .formacao-item {
+            margin-bottom: 40px;
         }
 
+        .formacao-title {
+            text-align: center;
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .formacao-detail {
+            text-align: center;
+            color: #666;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .formacao-logo {
+            display: block;
+            max-width: 200px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .formacao-container {
+                padding: 10px;
+            }
+
+            .formacao-title {
+                font-size: 24px;
+            }
+
+            .formacao-detail {
+                font-size: 16px;
+            }
+        }
     </style>
 
-    {% for formacao in formacoes %}
-        <h2>{{ formacao.curso }}</h2>
-        <p>Local: {{ formacao.local }}</p>
-        <p>Período: {{ formacao.periodo }}</p>
-
-        <img src="{{ formacao.logotipo_instituicao.url }}" alt="Logotipo da Instituição"
-             style="display: flex; justify-content: center; margin: 0 auto;">
-    {% endfor %}
-{% endblock main %}
+    <div class="formacao-container">
+        {% for formacao in formacoes %}
+            <div class="formacao-item">
+                <h2 class="formacao-title">{{ formacao.curso }}</h2>
+                <p class="formacao-detail">Local: {{ formacao.local }}</p>
+                <p class="formacao-detail">Período: {{ formacao.periodo }}</p>
+                {% if formacao.logotipo_instituicao %}
+                    <img src="{{ formacao.logotipo_instituicao.url }}" alt="Logotipo da Instituição" class="formacao-logo">
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

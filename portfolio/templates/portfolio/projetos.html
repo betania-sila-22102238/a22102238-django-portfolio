@@ -1,53 +1,64 @@
 {% extends 'portfolio/layout.html' %}
+{% load static %}
 
 {% block main %}
     <style>
+
+        .projects-intro {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .projects-intro p {
+            font-size: 18px;
+            color: #555;
+        }
+
         .projects-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            grid-gap: 20px;
+            gap: 20px;
+            padding: 20px;
         }
 
         .project {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
         }
 
         .project:hover {
             transform: translateY(-5px);
-            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); /* Altere conforme necessário */
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
         }
-
-
-        @keyframes gradientMove {
-            0% {
-                background-position: 0% 50%;
-            }
-            100% {
-                background-position: 100% 50%;
-            }
-        }
-
-        .projects-container:hover .project {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
 
         .project img {
-            max-width: 100%;
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
             border-radius: 8px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
-        h2 {
+        .project h2 {
             font-size: 24px;
             color: #333;
             margin-bottom: 10px;
         }
 
-        p {
-            font-size: 14px;
-            color: #777;
+        .project p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+            text-align: justify;
+            flex-grow: 1;
         }
 
         @media (max-width: 767px) {
@@ -55,63 +66,133 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .project-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .project-title h2 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .project-title img {
+            width: 50px;
+            height: auto;
+            margin-left: 10px;
+        }
     </style>
 
-    <div class="projects-container">
-        <div class="project">
-            <h2>Minesweeper</h2>
-            <img src="../../static/portfolio/images/minesweeper.jpg" alt="Minesweeper">
-            <p>Minesweeper é um popular jogo de quebra-cabeça baseado em lógica, que desafia os jogadores a revelar células em um campo minado virtual, evitando bombas escondidas.
-                O objetivo principal do jogo é limpar o campo sem detonar nenhuma mina. Os jogadores começam com um tabuleiro cheio de células ocultas, algumas das quais contêm bombas e outras estão vazias. À medida que exploram o tabuleiro, cada célula revelada exibe um número que indica quantas bombas estão adjacentes a ela. Os jogadores devem usar essas informações para determinar a localização das bombas e marcar as células suspeitas com bandeiras.
-                Estratégia, lógica e a capacidade de dedução são essenciais para evitar explosões e completar o tabuleiro com sucesso. Minesweeper é conhecido por seu desafio intelectual e é uma ótima maneira de testar as habilidades de resolução de problemas dos jogadores.</p>
+    <div class="container">
+        <div class="projects-intro">
+            <p>Estes projetos foram realizados durante o meu percurso acadêmico na universidade, onde pude aplicar e
+                aprimorar meus conhecimentos com muito gosto e dedicação. Aqui estão alguns dos meus trabalhos mais
+                notáveis:</p>
         </div>
+        <div class="projects-container">
+            <div class="project">
+                <h2>Minesweeper</h2>
+                <img src="{% static 'portfolio/images/minesweeper.jpg' %}" alt="Minesweeper">
+                <p>Minesweeper é um jogo de quebra-cabeça baseado em lógica. O objetivo é limpar o campo minado sem
+                    detonar nenhuma mina. Os jogadores devem usar as dicas numéricas para evitar as minas escondidas e
+                    marcar suas localizações com bandeiras. Estratégia e lógica são essenciais para completar o
+                    tabuleiro com sucesso.</p>
+            </div>
 
-        <div class="project">
-            <h2>Não te Constipes</h2>
-            <img src="../../static/portfolio/images/naoTeConstipes.jpg" alt="Não Te Constipes">
-            <p>Não Te Constipes é um jogo de tabuleiro para dois jogadores, em que cada jogador tem uma família de 4
-                pessoas:
-                O jogador 1 é dono dos peões identificados pelas letras a, b, ce d.
-                O jogador 2 é dono dos peões identificados pelas letras x, y, ze w.
-                No início do jogo, os 4 peões de cada jogador estão na sua casa mãe, em lados opostos do tabuleiro. A
-                cada jogo, o jogador lança os dados e escolhe apenas um dos seus peões para se movimentar. O peão
-                escolhido, avançou o número de casas que saíram no lançamento dos dados.
-                O objetivo de cada jogador é fazer com que todos os seus 4 jogadores completem uma volta ao tabuleiro.
-                Ganha o primeiro jogador a alcançar esse feito.
-                No entanto, se um peão for ultrapassado por um peão da outra família (peão do jogador oponente), fica
-                constipado e tem de voltar para a sua casa mãe.
-                O peão quando remetido em casa mãe deixa de ficar constipado e pode ser usado normalmente.</p>
-        </div>
+            <div class="project">
+                <h2>Não te Constipes</h2>
+                <img src="{% static 'portfolio/images/naoTeConstipes.jpg' %}" alt="Não Te Constipes">
+                <p>Não Te Constipes é um jogo de tabuleiro para dois jogadores, cada um com uma família de 4 peões. O
+                    objetivo é completar uma volta ao tabuleiro com todos os peões. Se um peão for ultrapassado por
+                    outro da família oponente, ele fica constipado e volta para a casa mãe. Ganha o primeiro jogador a
+                    completar a volta com todos os peões.</p>
+            </div>
 
-        <div class="project">
-            <h2>Deisiflix</h2>
-            <img src="../../static/portfolio/images/deisiflix.jpg" alt="Deisiflix">
-            <p>Durante o meu percurso académico, trabalhei num projeto de desenvolvimento de uma aplicação em Java para análise de estatísticas de filmes.
-                O objetivo era criar uma aplicação capaz de responder a consultas sobre dados de filmes numa base de dados.
-                Desenvolvi funcionalidades que incluíam consultas detalhadas, cálculos estatísticos, geração de relatórios e uma interface amigável.
-                Este projeto proporcionou-me a oportunidade de aplicar conhecimentos em Java e análise de dados,
-                enquanto explorava o mundo do cinema por meio de estatísticas.
-            </p>
-        </div>
+            <div class="project">
+                <h2>Deisiflix</h2>
+                <img src="{% static 'portfolio/images/deisiflix.jpg' %}" alt="Deisiflix">
+                <p>Deisiflix é uma aplicação em Java para análise de estatísticas de filmes. Permite responder a
+                    consultas sobre dados de filmes, realizar cálculos estatísticos, gerar relatórios e oferecer uma
+                    interface amigável. Foi desenvolvida para aplicar conhecimentos em Java e análise de dados,
+                    explorando o mundo do cinema por meio de estatísticas.</p>
+            </div>
 
-        <div class="project">
-            <h2>Deisi Jungle</h2>
-            <img src="../../static/portfolio/images/deisijungle.jpg" alt="Deisiflix">
-            <p>Imagine-se numa savana distante, onde os animais decidiram resolver um mistério antigo: Quem é o atleta supremo da selva? Para resolver essa questão, eles organizaram uma série de competições esportivas. O desafio é claro: quem conquistar a maioria das provas será coroado como o Rei da Selva.
-                No entanto, a notícia dessas competições chega até Tarzan, que não pode resistir a um desafio. Ele está convencido de que pode facilmente vencer todas as competições. A primeira delas é uma corrida de atletismo.
-                Neste emocionante jogo, você assumirá o papel de um dos animais da selva, competindo contra outros em uma pista de atletismo empolgante. Suas habilidades e estratégias serão testadas à medida que você enfrenta uma série de desafios atléticos. Será que você tem o que é preciso para superar a concorrência e se tornar o grande campeão da selva?Imagine-se numa savana distante, onde os animais decidiram resolver um mistério antigo: Quem é o atleta supremo da selva? Para resolver essa questão, eles organizaram uma série de competições esportivas. O desafio é claro: quem conquistar a maioria das provas será coroado como o Rei da Selva.
-                No entanto, a notícia dessas competições chega até Tarzan, que não pode resistir a um desafio. Ele está convencido de que pode facilmente vencer todas as competições. A primeira delas é uma corrida de atletismo.
-                Neste emocionante jogo, você assumirá o papel de um dos animais da selva, competindo contra outros em uma pista de atletismo empolgante. Suas habilidades e estratégias serão testadas à medida que você enfrenta uma série de desafios atléticos. Será que você tem o que é preciso para superar a concorrência e se tornar o grande campeão da selva?
-            </p>
-        </div>
+            <div class="project">
+                <h2>Deisi Jungle</h2>
+                <img src="{% static 'portfolio/images/deisijungle.jpg' %}" alt="Deisi Jungle">
+                <p>Deisi Jungle é um jogo onde os animais competem em uma série de competições esportivas para
+                    determinar o atleta supremo da selva. O jogador assume o papel de um dos animais e compete em
+                    corridas e outros desafios atléticos. O objetivo é vencer a maioria das provas e ser coroado como o
+                    Rei da Selva.</p>
+            </div>
 
-        <div class="project">
-            <h2>Máquina de Lavar Roupa</h2>
-            <img src="../../static/portfolio/images/Arquitetura%20de%20computadores.jpg" alt="Deisiflix">
-            <p>Nas aulas de Arquiteturas de Computadores, participei de um projeto empolgante que simulava a automação de uma máquina de lavar roupa. Nesse desafio, nossa tarefa era criar um sistema inteligente capaz de controlar e otimizar todas as etapas do ciclo de lavagem, desde a seleção da carga até o enxágue final.
-                Utilizamos os princípios de arquitetura de computadores para projetar uma unidade central de processamento (CPU) que pudesse receber e interpretar comandos de usuário, ajustar as configurações de lavagem com base nas preferências e nas necessidades da roupa e monitorar o progresso do ciclo em tempo real.
-                Nossa simulação envolveu a criação de uma interface intuitiva para os usuários, permitindo que eles escolhessem entre diferentes programas de lavagem, ajustassem a temperatura da água, definissem o nível de agitação e até mesmo agendasse inícios de lavagem. O sistema era capaz de tomar decisões inteligentes, como ajustar o tempo de lavagem com base na quantidade de roupa carregada e garantir a eficiência energética durante todo o processo.
-                Foi uma experiência valiosa em que aplicamos os conhecimentos de arquitetura de computadores para aprimorar a automação de tarefas diárias, tornando o processo de lavagem de roupas mais conveniente, econômico e eficiente.</p>
+            <div class="project">
+                <h2>Máquina de Lavar Roupa</h2>
+                <img src="{% static 'portfolio/images/Arquitetura%20de%20computadores.jpg' %}"
+                     alt="Máquina de Lavar Roupa">
+                <p>Este projeto simula a automação de uma máquina de lavar roupa, controlando e otimizando todas as
+                    etapas do ciclo de lavagem. Inclui uma interface para selecionar programas, ajustar a temperatura da
+                    água, definir o nível de agitação e agendar inícios de lavagem. O sistema toma decisões inteligentes
+                    para eficiência energética e conveniência.</p>
+            </div>
+
+            <div class="project">
+                <h2>Aplicação de Mobilidade Urbana</h2>
+                <img src="{% static 'portfolio/images/Detalhes2.jpg' %}" alt="Reportar Incidente">
+                <p>A Aplicação de Mobilidade Urbana visa auxiliar os condutores na busca por estacionamentos disponíveis
+                    na cidade de Lisboa, gerenciados pela EMEL. O projeto envolve a implementação de uma interface
+                    intuitiva para relatar incidentes, verificar disponibilidade de vagas e obter direções para o
+                    estacionamento desejado. O objetivo é melhorar a mobilidade urbana e facilitar a vida dos condutores
+                    na cidade.
+                    <a href="{% static 'portfolio/apk/app_emel.apk' %}">Baixar APK</a>
+                </p>
+            </div>
+            <div class="project">
+                <h2>EMEL - Gestão de Estacionamentos</h2>
+                <img src="{% static 'portfolio/images/emel.png' %}" alt="EMEL">
+                <p>A aplicação EMEL tem como objetivo facilitar a gestão e o acesso aos parques de estacionamento em
+                    Lisboa. Inclui funcionalidades como localização de parques disponíveis, estado de ocupação em tempo
+                    real, registo de incidentes e navegação até os parques. O projeto foi desenvolvido com foco na
+                    usabilidade e experiência do utilizador, utilizando tecnologias como Axure para prototipagem e
+                    testes de usabilidade.</p>
+            </div>
+            <div class="project">
+                <h2>Projecto Concessionário Praias Algarve</h2>
+                <img src="{% static 'portfolio/images/sombrinhas.png' %}" alt="Praias Algarve">
+                <p>O Projecto Concessionário Praias Algarve foi desenvolvido para gerenciar reservas de sombrinhas e
+                    espreguiçadeiras nas praias A, B e C. Utilizando tecnologias como Apache Tomcat, Webservices REST e
+                    SOAP, e comunicação RMI para o backend, o sistema permite reservar, cancelar e listar sombrinhas
+                    disponíveis. A autenticação e o registo de utilizadores são realizados no frontend, enquanto os
+                    dados de reservas são mantidos no backend.</p>
+            </div>
+            <div class="project">
+                <h2>Projecto SeguidorDeLinha-EV3</h2>
+                <img src="{% static 'portfolio/images/carrinho.jpg' %}" alt="Praias Algarve">
+                <p>Este trabalho teve por base os conhecimentos adquiridos na disciplina de Arquiteturas
+                    Avançadas de Computadores no referente a Arduino Uno R3 compreendendo a parte de hardware
+                    e software. Construir um projeto de carro Arduino pode ser uma tarefa desafiadora,
+                    exigindo conhecimentos de programação, eletrônica e robótica. No entanto, com as habilidades
+                    certas, foi uma experiência muito gratificante e divertida.</p>
+            </div>
+            <div class="project">
+                <h2>Uber de Transporte de Mercadorias</h2>
+                <img src="{% static 'portfolio/images/logo_uber.jpg' %}" alt="Uber de Transporte de Mercadorias">
+                <p>O projeto "Uber de Transporte de Mercadorias" foi desenvolvido como parte do Trabalho Final de Curso
+                    (TFC) na Licenciatura em Engenharia Informática. Este projeto visa criar uma plataforma centralizada
+                    para facilitar o transporte eficiente e seguro de mercadorias. Inspirado no modelo de negócios da
+                    Uber, mas focado na logística de mercadorias.
+                    <a href="https://youtu.be/ceeBSjtlwWQ?si=Vqszv_iO0yYp1tx2">Veja o vídeo no YouTube</a>
+                </p>
+            </div>
+
         </div>
     </div>
 {% endblock %}

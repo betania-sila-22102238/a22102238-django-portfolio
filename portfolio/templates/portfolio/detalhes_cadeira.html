@@ -1,4 +1,5 @@
 {% extends 'portfolio/layout.html' %}
+{% load static %}
 
 {% block title %}Detalhes da Cadeira - {{ cadeira.nome }}{% endblock %}
 
@@ -6,16 +7,12 @@
     <section class="cadeira-detalhes">
         <h2 class="cadeira-nome">{{ cadeira.nome }}</h2>
         <ul class="cadeira-info">
-            <li class="cadeira-info-item">Ano: {{ cadeira.ano }}</li>
-            <li class="cadeira-info-item">Semestre: {{ cadeira.semestre }}</li>
-            <li class="cadeira-info-item">Ano Letivo: {{ cadeira.ano_letivo_frequentado }}</li>
-            <li class="cadeira-info-item">Tópicos Abordados: {{ cadeira.topicos_abordados }}</li>
-            <li class="cadeira-info-item">{{ cadeira.imagem }}</li>
-            <!-- Adicione outras informações da cadeira conforme necessário -->
+            <li class="cadeira-info-item"><strong>Ano:</strong> {{ cadeira.ano }}</li>
+            <li class="cadeira-info-item"><strong>Semestre:</strong> {{ cadeira.semestre }}</li>
+            <li class="cadeira-info-item"><strong>Ano Letivo:</strong> {{ cadeira.ano_letivo_frequentado }}</li>
+            <li class="cadeira-info-item"><strong>Tópicos Abordados:</strong> {{ cadeira.topicos_abordados }}</li>
         </ul>
-        <!-- Verificar se o usuário está autenticado antes de mostrar as opções de editar e remover -->
         {% if user.is_authenticated %}
-            <!-- Botões para editar e remover a cadeira -->
             <div class="cadeira-opcoes">
                 <form method="post" action="{% url 'portfolio:remover_cadeira' cadeira.id %}">
                     {% csrf_token %}
@@ -37,8 +34,9 @@
 
         .cadeira-nome {
             font-size: 28px;
-            color: pink;
-            margin-bottom: 10px;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
         }
 
         .cadeira-info {
@@ -46,32 +44,32 @@
             padding: 0;
         }
 
-        /* Estilo para a classe 'cadeira-info-item' */
         .cadeira-info-item {
-            /* Estilos de exemplo - personalize conforme necessário */
-            list-style: none; /* Remova os marcadores de lista */
-            padding: 10px; /* Espaçamento interno */
-            border: 1px solid #ccc; /* Borda com cor cinza claro */
-            background-color: #f9f9f9; /* Cor de fundo */
-            margin-bottom: 10px; /* Espaçamento inferior */
-            display: flex; /* Use display flex para alinhar os elementos internos */
-            align-items: center; /* Alinhe verticalmente os elementos internos */
+            padding: 15px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            border-radius: 5px;
         }
 
-        /* Estilo para a imagem dentro do elemento */
+        .cadeira-info-item strong {
+            margin-right: 10px;
+        }
+
         .cadeira-info-item img {
-            /* Estilos para a imagem - personalize conforme necessário */
-            max-width: 100px; /* Largura máxima da imagem */
-            max-height: 100px; /* Altura máxima da imagem */
-            margin-right: 10px; /* Espaçamento à direita da imagem */
+            max-width: 100px;
+            max-height: 100px;
+            margin-left: auto;
+            border-radius: 5px;
         }
-
 
         .cadeira-opcoes {
             margin-top: 20px;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            justify-content: center;
+            gap: 20px;
         }
 
         .remover-button,
@@ -95,7 +93,7 @@
         }
 
         .editar-link {
-            background-color: #a41515;
+            background-color: #007bff;
             color: #fff;
         }
 
@@ -103,7 +101,35 @@
             background-color: #0056b3;
         }
 
-        /* Adicione outros estilos e animações conforme necessário para personalizar sua página. */
-    </style>
+        /* Dark mode styles */
+        body.dark-mode .cadeira-detalhes {
+            background-color: #2e2e2e;
+            color: #ccc;
+        }
 
+        body.dark-mode .cadeira-info-item {
+            background-color: #444;
+            border-color: #555;
+        }
+
+        body.dark-mode .cadeira-info-item img {
+            border-color: #555;
+        }
+
+        body.dark-mode .remover-button {
+            background-color: #a41515;
+        }
+
+        body.dark-mode .remover-button:hover {
+            background-color: #8e1313;
+        }
+
+        body.dark-mode .editar-link {
+            background-color: #0056b3;
+        }
+
+        body.dark-mode .editar-link:hover {
+            background-color: #003d80;
+        }
+    </style>
 {% endblock %}

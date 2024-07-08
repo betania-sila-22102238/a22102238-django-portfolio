@@ -3,19 +3,6 @@
 
 {% block main %}
     <style>
-        * {
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            height: 100%;
-            width: 100%;
-            background-color: #f0f0f0;
-        }
-
         .hero {
             position: relative;
             background-image: url('{% static "portfolio/images/port3.jpeg" %}');
@@ -27,92 +14,101 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            color: white;
+            padding: 0 20px;
+            animation: fadeIn 2s ease-in-out;
         }
 
         .hero h1 {
             font-size: 36px;
-            margin-bottom: 10px;
-            color: white;
-        }
-
-        .hero p {
-            font-size: 24px;
-            color: white;
-            max-width: 80%;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .about {
             padding: 50px;
-            color: black;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            animation: slideUp 1s ease-in-out;
         }
 
         .about h2 {
-            font-size: 36px;
-            color: black;
+            font-size: 28px;
+            color: #333;
             margin-bottom: 20px;
+            border-left: 5px solid #1fc9e9;
+            padding-left: 10px;
         }
 
         .about p {
-            font-size: 18px;
-            line-height: 1.5;
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+            text-align: justify;
         }
 
+        .about a {
+            color: #1fc9e9;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .about a:hover {
+            color: #0a97b0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
     </style>
 
-    <section class="hero">
-        <div class="parallax-layer"></div>
-        <h1>"A tecnologia move o mundo e a humanidade para frente,
-            conectando sonhos e possibilidades em uma realidade que nunca poderíamos imaginar."</h1>
-    </section>
+    <div class="hero">
+        <h1>"A tecnologia move o mundo e a humanidade para frente, conectando sonhos e possibilidades em uma realidade que nunca poderíamos imaginar."</h1>
+    </div>
 
-    <section class="about">
-        <article>
-            <section id="sobre">
-                <p>Olá, meu nome é Betânia e sou uma entusiasta da tecnologia, apaixonada por explorar todas
-                    as
-                    possibilidades que o mundo digital oferece.
-                    Acredito que a tecnologia tem o poder de transformar a maneira como vivemos e trabalhamos, e
-                    estou
-                    sempre em busca de aprender mais e me manter atualizada sobre as últimas tendências e novidades.
-                    Para mim, a tecnologia é muito mais do que apenas gadgets e dispositivos, é uma ferramenta
-                    poderosa
-                    para impulsionar o progresso e melhorar a vida das pessoas. Estou animada para compartilhar essa
-                    paixão com você!
+    <div class="container">
+        <section class="about">
+            <article>
+                <h2>Sobre Mim</h2>
+                <p>Olá, meu nome é Betânia e sou uma recém-licenciada em Engenharia Informática, apaixonada por tecnologia e inovação. Minha jornada no mundo digital começou como uma curiosidade e rapidamente se transformou em uma paixão profunda.
+                   Acredito que a tecnologia tem o poder de transformar a maneira como vivemos e trabalhamos, e estou sempre em busca de aprender mais e me manter atualizada sobre as últimas tendências e novidades.
+                   Para mim, a tecnologia é muito mais do que apenas gadgets e dispositivos, é uma ferramenta poderosa para impulsionar o progresso e melhorar a vida das pessoas. Estou animada para compartilhar essa paixão com você!
                 </p>
-                <p>Para saber mais sobre mim, visite <a href="{% url 'portfolio:mais_sobre_mim' %}"
-                                                        style="color:rgb(31, 209, 233);">minha outra página!</a></p>
-            </section>
-        </article>
-    </section>
+                <p>Para saber mais sobre mim, visite <a href="{% url 'portfolio:mais_sobre_mim' %}">minha outra página!</a></p>
+            </article>
+        </section>
 
-    <section class="about">
-        <article>
-                <p>Desde sempre, a tecnologia despertou em mim uma paixão sem limites e uma curiosidade insaciável
-                    sobre
-                    como ela funciona e como pode ser usada para transformar o mundo.
-                    Acredito que a Engenharia Informática é a escolha perfeita para transformar essa paixão e
-                    curiosidade em conhecimento prático e habilidades técnicas avançadas.
-                    Quero me tornar uma engenheira informática para aprender a criar tecnologias inovadoras e
-                    usar meu conhecimento para ajudar a tornar o mundo um lugar melhor, mais conectado e mais
-                    avançado.
+        <section class="about">
+            <article>
+                <h2>Minha Paixão por Tecnologia</h2>
+                <p>Como recém-licenciada em Engenharia Informática, minha paixão pela tecnologia não conhece limites. Ao longo dos meus estudos, explorei e contribuí para diversas áreas da informática, desde desenvolvimento de software até análise de dados e inteligência artificial.
+                   Acredito que a engenharia informática é a chave para criar soluções inovadoras que podem transformar o mundo. Meu objetivo é continuar aprendendo e aplicando meus conhecimentos para desenvolver tecnologias que façam a diferença.
+                   Estou empenhada em usar minhas habilidades para ajudar a resolver problemas complexos, melhorar a eficiência e criar um futuro mais conectado e avançado. A jornada de um engenheiro é repleta de desafios, mas cada obstáculo superado é um passo em direção a um mundo melhor.
                 </p>
-        </article>
-    </section>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Função para atualizar a posição do parallax
-            function updateParallax() {
-                var scrollTop = window.pageYOffset;
-                var parallaxLayers = document.querySelectorAll('.parallax-layer');
-                parallaxLayers.forEach(function (layer) {
-                    layer.style.transform = 'translateY(' + (scrollTop * 0.5) + 'px)';
-                });
-            }
-
-            // Chame a função ao carregar a página e ao rolar a página
-            window.addEventListener('load', updateParallax);
-            window.addEventListener('scroll', updateParallax);
-        });
-    </script>
-{% endblock main %}
+            </article>
+        </section>
+    </div>
+{% endblock %}
