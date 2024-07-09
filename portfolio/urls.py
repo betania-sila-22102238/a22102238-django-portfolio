@@ -7,7 +7,7 @@ app_name = "portfolio"
 
 urlpatterns = [
 
-    path('index/', views.index_page_view, name='index'),
+    path('', views.index_page_view, name='index'),
     path('blog/', views.blog, name='blog'),
     path('contacto/', views.contacto_page_view, name='contacto'),
     path('projetos/', views.projetos_page_view, name='projetos'),
@@ -33,7 +33,7 @@ urlpatterns = [
 
     path('educacao/', views.educacao, name='educacao'),
     path('lista_tfc/', views.lista_tfc, name='lista_tfc'),
-    path('', views.mais_sobre_mim, name='mais_sobre_mim'),
+    path('mais_sobre_mim/', views.mais_sobre_mim, name='mais_sobre_mim'),
     path('listar_secoes/', views.listar_secoes, name='listar_secoes'),
 
     # web
