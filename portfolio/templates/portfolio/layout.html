@@ -15,7 +15,6 @@
             background-color: #f0f0f0;
             transition: background-color 0.3s ease;
         }
-
         header {
             background-color: #282c34;
             padding: 20px 0;
@@ -23,55 +22,6 @@
             z-index: 1;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
-
-        header nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: space-between;
-            margin: 0;
-            padding: 0;
-        }
-
-        header nav ul li {
-            position: relative;
-        }
-
-        header nav ul li a {
-            text-decoration: none;
-            color: white;
-            font-size: 18px;
-            padding: 10px 20px;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            border-radius: 5px;
-            display: block;
-        }
-
-        header nav ul li a:hover {
-            background-color: #61dafb;
-            color: #282c34;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #444;
-            min-width: 160px;
-            z-index: 1;
-            border-radius: 5px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        .dropdown-content a {
-            color: white;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
         main {
             margin-top: 20px;
             padding: 20px;
@@ -79,7 +29,6 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-
         footer {
             background-color: #282c34;
             color: white;
@@ -87,83 +36,68 @@
             text-align: center;
             margin-top: 20px;
         }
-
         .custom-footer p {
             margin: 0;
         }
-
-        .hero {
-            position: relative;
-            background-image: url('{% static 'portfolio/images/port3.jpeg' %}');
-            background-size: cover;
-            background-position: center;
-            height: 600px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
+        .dropdown-menu {
+            display: none;
         }
-
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 10px;
-        }
-
-        .hero p {
-            font-size: 24px;
-            max-width: 80%;
-        }
-
-        @media screen and (max-width: 767px) {
-            header nav ul {
-                flex-direction: column;
-            }
-
-            .hero h1 {
-                font-size: 36px;
-            }
-
-            .hero p {
-                font-size: 18px;
-            }
+        .dropdown:hover .dropdown-menu {
+            display: block;
         }
     </style>
     {% block extra_styles %}{% endblock %}
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 </head>
 <body>
 <header>
-    <nav>
-        <ul class="open">
-            <li><a href="{% url 'portfolio:index' %}">Home</a></li>
-            <li class="dropdown">
-                <a href="#">Sobre Mim</a>
-                <div class="dropdown-content">
-                    <a href="{% url 'portfolio:lista_cadeiras' %}">Licenciatura</a>
-                    <a href="{% url 'portfolio:educacao' %}">Educação</a>
-                    <a href="{% url 'portfolio:competencias' %}">Aptidões e competências pessoais</a>
-                    <a href="{% url 'portfolio:mais_sobre_mim' %}">Interesses e hobbies</a>
-                </div>
-            </li>
-            <li><a href="{% url 'portfolio:projetos' %}">Projetos</a></li>
-            <li class="dropdown">
-                <a href="#">Web</a>
-                <div class="dropdown-content">
-                    <a href="{% url 'portfolio:exercicios' %}">Calculadora</a>
-                    <a href="http://betas.pythonanywhere.com/">Laboratórios</a>
-                    <a href="https://www.publico.pt/">Notícias</a>
-                </div>
-            </li>
-            <li><a href="{% url 'portfolio:contacto' %}">Contacto</a></li>
-            <li><a href="#footer">Rodapé</a></li>
-        </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'portfolio:index' %}">Portfólio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'portfolio:index' %}">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Sobre Mim
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{% url 'portfolio:lista_cadeiras' %}">Licenciatura</a></li>
+                            <li><a class="dropdown-item" href="{% url 'portfolio:educacao' %}">Educação</a></li>
+                            <li><a class="dropdown-item" href="{% url 'portfolio:competencias' %}">Aptidões e competências pessoais</a></li>
+                            <li><a class="dropdown-item" href="{% url 'portfolio:mais_sobre_mim' %}">Interesses e hobbies</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'portfolio:projetos' %}">Projetos</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownWeb" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Web
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownWeb">
+                            <li><a class="dropdown-item" href="{% url 'portfolio:exercicios' %}">Calculadora</a></li>
+                            <li><a class="dropdown-item" href="http://betas.pythonanywhere.com/">Laboratórios</a></li>
+                            <li><a class="dropdown-item" href="https://www.publico.pt/">Notícias</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'portfolio:contacto' %}">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#footer">Rodapé</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
 </header>
-<div id="particles-js"></div>
-<main>
+<main class="container">
     {% block main %}{% endblock %}
 </main>
 <footer id="footer" class="custom-footer">
@@ -176,6 +110,18 @@
     </div>
 </footer>
 {% block extra_scripts %}{% endblock %}
-<script src="{% static 'portfolio/js/scriptlayout.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXlRnF/4Y+G6x9RSMAetgPSLM0HU8Al47CUF5k1MquUH59TZl9tw60f3Lk5G"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVX3yTZzGaw9nvDfrFwFLjvH14EUqOgFjyR1bzp6t5gHu/Y0L8rxO8tpgFjyD0S"
+        crossorigin="anonymous"></script>
+<script>
+    document.querySelector('.navbar-toggler').addEventListener('click', function() {
+        var nav = document.getElementById('navbarNav');
+        nav.classList.toggle('show');
+    });
+</script>
 </body>
 </html>

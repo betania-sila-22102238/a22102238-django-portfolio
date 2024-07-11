@@ -242,10 +242,12 @@ main {
         list-style: none;
         padding: 0;
         position: relative;
-        top: 60px;
         width: 100%;
         text-align: center;
-        z-index: 0;
+    }
+
+    nav ul.show {
+        display: block;
     }
 
     nav ul li {
@@ -277,7 +279,13 @@ main {
         z-index: 2;
     }
 
-    #menu-toggle.active + nav ul {
-        display: block;
+    .navbar-toggler-icon {
+        display: inline-block;
+        width: 1.5em;
+        height: 1.5em;
+        vertical-align: middle;
+        content: "";
+        background: no-repeat center center;
+        background-size: 100% 100%;
     }
 }
